@@ -330,8 +330,8 @@
     }
 
     .point-read-checkbox {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       border: 2px solid var(--color-border);
       border-radius: 4px;
       background: white;
@@ -342,16 +342,32 @@
       transition: all 0.2s;
       flex-shrink: 0;
       margin-left: var(--space-8);
+      position: relative;
+      user-select: none;
     }
 
     .point-read-checkbox:hover {
       border-color: var(--color-primary);
+      transform: scale(1.15);
+      box-shadow: 0 0 0 2px rgba(74, 155, 142, 0.2);
     }
 
     .point-read-checkbox.checked {
       background: var(--color-primary);
       border-color: var(--color-primary);
-      color: white;
+    }
+
+    /* CSS checkmark */
+    .point-read-checkbox.checked::after {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 3px;
+      width: 6px;
+      height: 12px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
     }
 
     /* Category Tags */
@@ -983,49 +999,60 @@
       console.log('✅ App inicializada correctamente');
       setupEventListeners();
       
-      // Add event listeners to all checkboxes
-      document.querySelectorAll('.point-read-checkbox').forEach(checkbox => {
-        checkbox.addEventListener('click', function(e) {
-          e.preventDefault();
-          toggleReadCheck(this);
+      // Use event delegation: clicking on a point-card or its checkbox toggles the read state
+      const grids = document.querySelectorAll('.points-grid');
+      console.log('🔍 Grids encontrados:', grids.length);
+      
+      grids.forEach(grid => {
+        grid.addEventListener('click', function(e) {
+          console.log('🖱️ Click detectado en grid', e.target);
+          const checkbox = e.target.closest('.point-read-checkbox');
+          const card = e.target.closest('.point-card');
+          
+          if (checkbox) {
+            console.log('✅ Click en checkbox');
+            e.preventDefault();
+            e.stopPropagation();
+            toggleReadCheck(checkbox);
+          } else if (card) {
+            console.log('📦 Click en card');
+            // if user clicks elsewhere on the card, toggle the checkbox inside
+            const innerCheckbox = card.querySelector('.point-read-checkbox');
+            if (innerCheckbox) {
+              toggleReadCheck(innerCheckbox);
+            }
+          }
         });
       });
+      
+      console.log('🔧 Event listeners agregados a', grids.length, 'grids');
       
       updateStats();
     });
 
     // Setup event listeners
-    function setupEventListeners() {
-      // Tab switching
-      document.querySelectorAll('.tab').forEach(tab => {
-        tab.addEventListener('click', function() {
-          const section = this.dataset.section;
-          switchSection(section);
-        });
-      });
-
-      // View controls
-      document.getElementById('detailedView').addEventListener('click', function() {
-        setViewMode(false);
-      });
-
-      document.getElementById('compactView').addEventListener('click', function() {
-        setViewMode(true);
-      });
-      
-      // Ensure all checkboxes have proper event listeners
-      document.querySelectorAll('.point-read-checkbox').forEach(checkbox => {
-        checkbox.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          toggleReadCheck(this);
-        });
-      });
-      
-      console.log('🔧 Event listeners configurados para', document.querySelectorAll('.point-read-checkbox').length, 'checkboxes');
-
-
-    }
+        function setupEventListeners() {
+          // Tab switching
+          document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+              const section = this.dataset.section;
+              switchSection(section);
+            });
+          });
+    
+          // View controls
+          document.getElementById('detailedView').addEventListener('click', function() {
+            setViewMode(false);
+          });
+    
+          document.getElementById('compactView').addEventListener('click', function() {
+            setViewMode(true);
+          });
+          
+          // no-op: delegated listeners handle checkbox clicks
+          
+          console.log('🔧 Event listeners configurados');
+        }
 
     // Switch between sections
     function switchSection(sectionId) {
@@ -1067,26 +1094,33 @@
 
     // Toggle read checkbox (new position at end of text)
     function toggleReadCheck(checkbox) {
+      if (!checkbox) {
+        console.error('❌ Checkbox es null');
+        return;
+      }
       console.log('📋 Checkbox clickeado');
       const card = checkbox.closest('.point-card');
+      if (!card) {
+        console.error('❌ Card no encontrada');
+        return;
+      }
       const pointId = card.dataset.point;
       console.log('🔍 Point ID:', pointId);
       
       if (checkedPoints.has(pointId)) {
         checkedPoints.delete(pointId);
         checkbox.classList.remove('checked');
-        checkbox.innerHTML = '';
         card.classList.remove('checked');
         console.log('❌ Desmarcado punto:', pointId);
       } else {
         checkedPoints.add(pointId);
         checkbox.classList.add('checked');
-        checkbox.innerHTML = '✓';
         card.classList.add('checked');
         console.log('✅ Marcado punto:', pointId);
       }
       
       console.log('📊 Puntos marcados:', Array.from(checkedPoints));
+      console.log('📊 Checkbox tiene clase checked:', checkbox.classList.contains('checked'));
       updateStats();
     }
 
