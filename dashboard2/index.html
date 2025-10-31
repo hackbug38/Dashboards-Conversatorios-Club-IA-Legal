@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Club IA Legal - IA & Práctica Jurídica</title>
+  <title>Club IA Legal - Gestión de Riesgos</title>
   <style>
     :root {
       /* Professional Color Tokens */
@@ -57,18 +57,29 @@
       background: #FFFFFF;
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
-      padding: var(--space-24);
+      padding: 0;
       margin-bottom: var(--space-24);
       text-align: center;
       box-shadow: var(--shadow-md);
+      overflow: hidden;
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-12);
-      margin-bottom: var(--space-16);
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .header-content {
+      padding: var(--space-24);
     }
 
     .logo-icon {
@@ -221,13 +232,13 @@
     /* Main Layout */
     .main-layout {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 260px 1fr;
       gap: var(--space-24);
+      align-items: start;
     }
 
     .content-area {
       min-height: 400px;
-      margin-right: 300px;
     }
 
     .section {
@@ -454,22 +465,19 @@
       text-align: center;
     }
 
-    /* Sidebar - sticky on the right side, centered vertically */
+    /* Sidebar - sticky on the left side */
     .sidebar {
-  position: fixed;
-  left: 40px;
-  top: 380px;
-  transform: none;
-  width: 240px;
-  max-height: 80vh;
+  position: sticky;
+  top: 20px;
+  width: 100%;
+  max-height: calc(100vh - 40px);
   overflow-y: auto;
   background: white;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-16);
   box-shadow: var(--shadow-md);
-  z-index: 10;
-  margin-left: 0;
+  align-self: start;
     }
 
     .sidebar-section {
@@ -542,17 +550,10 @@
       .main-layout {
         grid-template-columns: 1fr;
       }
-      .content-area {
-        margin-left: 0;
-        margin-right: 0;
-      }
       .sidebar {
         position: static;
         width: 100%;
-        box-shadow: none;
-        border: none;
-        padding: var(--space-20);
-        margin-bottom: var(--space-24);
+        max-height: none;
       }
     }
 
@@ -579,6 +580,62 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Modal styles for mental map */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow: auto;
+    }
+
+    .modal.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      margin: auto;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      background: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .modal-close:hover {
+      background: rgba(74, 155, 142, 0.8);
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
@@ -586,18 +643,16 @@
     <!-- Header -->
     <header class="header">
       <div class="logo">
-        <div class="logo-icon">🧠⚖️</div>
-        <div class="logo-text">
-          <h1>CLUB IA LEGAL</h1>
-          <p>Inteligencia Artificial &amp; Derecho</p>
-        </div>
+        <img src="club_ia_legal_banner_v3.png" alt="Club IA Legal">
       </div>
-      <h1 class="event-title">Conversatorio Club IA Legal</h1>
-      <h2 class="event-subtitle">Cómo usar la IA en la práctica jurídica, del prompt a la acción</h2>
-      <div class="event-meta">
-        <span>📅 Domingo 19 de octubre de 2025</span>
-        <span>👤 Ponente: <a href="https://www.linkedin.com/in/angelicaramirezabogada/" target="_blank" id="ponenteLink">María Angélica Ramírez Ramírez</a></span>
-        <span>📊 Puntos más relevantes: 7</span>
+      <div class="header-content">
+        <h1 class="event-title">Conversatorio Club IA Legal</h1>
+        <h2 class="event-subtitle">Cómo usar la IA en la práctica jurídica, del prompt a la acción</h2>
+        <div class="event-meta">
+          <span>📅 Domingo 19 de octubre de 2025</span>
+          <span>👤 Ponente: <a href="https://www.linkedin.com/in/angelicaramirezabogada/" target="_blank" id="ponenteLink">María Angélica Ramírez Ramírez</a></span>
+          <span>📊 Puntos más relevantes: 7</span>
+        </div>
       </div>
     </header>
 
@@ -611,15 +666,42 @@
       <div class="tabs">
         <button class="tab active" data-section="hot-takes">Hot takes</button>
       </div>
-      
+
       <div class="view-controls">
         <button class="btn active" id="detailedView">📝 Vista Detallada</button>
         <button class="btn" id="compactView">📋 Vista Compacta</button>
+        <button class="btn" id="mentalMapBtn">🧠 Mapa Mental Prompting</button>
       </div>
     </div>
 
     <!-- Main Layout -->
     <div class="main-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <h4 class="sidebar-title">📊 Estadísticas</h4>
+          <div class="stat">
+            <span class="stat-label">Total de puntos</span>
+            <span class="stat-value">7</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h4 class="sidebar-title">📈 Progreso de lectura</h4>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p class="stat-label" style="margin-top: 8px; text-align: center;" id="progressText">0 de 7 completados (0%)</p>
+          <button class="btn btn-full" onclick="resetProgress()">🔄 Reiniciar Progreso</button>
+        </div>
+
+        <div class="sidebar-section">
+          <h4 class="sidebar-title">⚡ Acciones rápidas</h4>
+          <button class="btn btn-full" onclick="checkAll()">✅ Marcar todos como leídos</button>
+          <button class="btn btn-full" onclick="uncheckAll()">❌ Marcar como no leídos</button>
+        </div>
+      </aside>
+
       <div class="content-area">
         <section class="section active" id="hot-takes">
           <div class="section-header">
@@ -732,60 +814,17 @@
             </div>
           </div>
         </section>
+      </div>
+    </div>
 
-      <!-- Sidebar -->
-  <aside class="sidebar">
-        <div class="sidebar-section">
-          <h4 class="sidebar-title">📊 Estadísticas</h4>
-          <div class="stat">
-            <span class="stat-label">Total de puntos</span>
-            <span class="stat-value">7</span>
-          </div>
-
-        </div>
-
-        <div class="sidebar-section">
-          <h4 class="sidebar-title">📈 Progreso de lectura</h4>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-          <p class="stat-label" style="margin-top: 8px; text-align: center;" id="progressText">0 de 7 completados (0%)</p>
-          <button class="btn btn-full" onclick="resetProgress()">🔄 Reiniciar Progreso</button>
-        </div>
-
-        <!-- categories removed per request -->
-
-        <div class="sidebar-section">
-          <h4 class="sidebar-title">⚡ Acciones rápidas</h4>
-          <button class="btn btn-full" onclick="checkAll()">✅ Marcar todos como leídos</button>
-          <button class="btn btn-full" onclick="uncheckAll()">❌ Marcar como no leídos</button>
-        </div>
-      </aside>
+  <!-- Modal for Mental Map -->
+  <div id="mentalMapModal" class="modal">
+    <span class="modal-close" id="closeModal">&times;</span>
+    <div class="modal-content">
+      <img src="prompt fondo blanco.png" alt="Mapa Mental Prompting">
     </div>
   </div>
-  <style>
-    main, .content-area {
-      margin-left: 260px;
-      margin-right: 0;
-    }
-    @media (max-width: 1024px) {
-      main, .content-area {
-        margin-left: 0;
-        margin-right: 0;
-      }
-      .sidebar {
-        position: static !important;
-        top: unset !important;
-        left: unset !important;
-        transform: none !important;
-        width: 100%;
-        box-shadow: none;
-        border: none;
-        padding: var(--space-20);
-        margin-bottom: var(--space-24);
-      }
-    }
-  </style>
+
 
 
 
@@ -827,45 +866,28 @@
       });
       
       console.log('🔧 Event listeners agregados a', grids.length, 'grids');
-      
+
       updateStats();
       adjustSidebarPosition();
-      
-      // Adjust sidebar position on scroll with debounce
-      let scrollTimeout;
-      window.addEventListener('scroll', function() {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(adjustSidebarPosition, 10);
-      });
+
+      // Adjust sidebar position on scroll
+      window.addEventListener('scroll', adjustSidebarPosition);
+      window.addEventListener('resize', adjustSidebarPosition);
     });
 
-    // Adjust sidebar position to avoid blocking buttons at top of page
+    // Adjust sidebar position to center it vertically
     function adjustSidebarPosition() {
       const sidebar = document.querySelector('.sidebar');
-      if (!sidebar) {
-        console.error('Sidebar no encontrado!');
-        return;
-      }
-      
-      const scrollY = window.scrollY;
-      console.log('📜 Scroll Y:', scrollY);
-      
-      if (scrollY < 100) {
-        // At top of page: position sidebar below view buttons
-        sidebar.style.position = 'fixed';
-        sidebar.style.top = '380px';
-        sidebar.style.transform = 'none';
-        console.log('📌 Sidebar position: top (380px)');
-      } else {
-        // Below buttons: center sidebar vertically
-        sidebar.style.position = 'fixed';
-        sidebar.style.top = '50%';
-        sidebar.style.transform = 'translateY(-50%)';
-        console.log('📌 Sidebar position: centered (50%)');
-      }
-    }
+      if (!sidebar) return;
 
-    // category panel positioning removed
+      const sidebarHeight = sidebar.offsetHeight;
+      const viewportHeight = window.innerHeight;
+
+      // Calculate the top position to center the sidebar
+      const centeredTop = Math.max(20, (viewportHeight - sidebarHeight) / 2);
+
+      sidebar.style.top = `${centeredTop}px`;
+    }
 
     // Setup event listeners
     function setupEventListeners() {
@@ -885,9 +907,25 @@
       document.getElementById('compactView').addEventListener('click', function() {
         setViewMode(true);
       });
-      
+
+      // Mental Map Modal
+      document.getElementById('mentalMapBtn').addEventListener('click', function() {
+        document.getElementById('mentalMapModal').classList.add('active');
+      });
+
+      document.getElementById('closeModal').addEventListener('click', function() {
+        document.getElementById('mentalMapModal').classList.remove('active');
+      });
+
+      // Close modal when clicking outside the image
+      document.getElementById('mentalMapModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('active');
+        }
+      });
+
       // no-op: delegated listeners handle checkbox clicks
-      
+
       console.log('🔧 Event listeners configurados para', document.querySelectorAll('.point-read-checkbox').length, 'checkboxes');
 
 
