@@ -1,189 +1,156 @@
-# 🤖⚖️ Conversatorio Club IA Legal - Legal Prompting
+# Conversatorio Club IA Legal - Legal Prompting Dashboard
 
-<div align="center">
-
-![Legal AI](https://img.shields.io/badge/Legal-AI-4A9B8E?style=for-the-badge)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-
-**Interfaz interactiva para explorar los conceptos clave del Legal Prompting presentados en el conversatorio del Club IA Legal**
-
-[🚀 Ver Demo](#) | [📖 Documentación](#características) | [💡 Contribuir](#contribución)
-
-</div>
-
----
+Dashboard interactivo que presenta los conceptos clave del conversatorio "Cómo usar la IA en la práctica jurídica, del prompt a la acción" del Club IA Legal.
 
 ## 📋 Descripción
 
-Esta página web interactiva documenta los **puntos más relevantes** del conversatorio "**Cómo usar la IA en la práctica jurídica, del prompt a la acción**", organizado por el **Club IA Legal** el 19 de octubre de 2025, con la ponencia de **María Angélica Ramírez Ramírez**.
+Este proyecto es una interfaz web interactiva diseñada para facilitar el aprendizaje y seguimiento de los puntos más relevantes sobre Legal Prompting, presentados en el conversatorio del **19 de octubre de 2025** por **María Angélica Ramírez Ramírez**.
 
-La aplicación permite a los usuarios navegar, aprender y marcar su progreso a través de 7 conceptos fundamentales sobre **Legal Prompting** y el uso estratégico de la inteligencia artificial en el derecho.
+## ✨ Características Principales
 
----
+### 🎯 Funcionalidades del Dashboard
 
-## ✨ Características
+- **Banner Personalizado**: Logo del Club IA Legal con diseño profesional
+- **Dos Modos de Visualización**:
+  - Vista Detallada: Contenido completo de cada punto
+  - Vista Compacta: Resúmenes concisos en formato de tarjetas
+- **Mapa Mental Interactivo**: Botón dedicado para visualizar el diagrama de técnicas de prompting
+- **Sistema de Progreso**:
+  - Seguimiento en tiempo real de puntos leídos
+  - Barra de progreso visual
+  - Estadísticas actualizadas dinámicamente
+- **Sidebar Inteligente**: Panel lateral con posicionamiento sticky y centrado vertical automático
+- **Categorización Visual**: Tags de colores para identificar tipos de contenido
+- **Acciones Rápidas**: Botones para marcar todos como leídos/no leídos y reiniciar progreso
+- **Diseño Responsivo**: Adaptable a diferentes tamaños de pantalla
 
-### 🎯 Funcionalidades Principales
+### 🎨 Interfaz de Usuario
 
-- **📊 Panel de Estadísticas en Tiempo Real**
-  - Contador de puntos totales (7)
-  - Barra de progreso de lectura
-  - Porcentaje de completado actualizado dinámicamente
+- Diseño limpio y profesional con paleta de colores corporativa
+- Tipografía optimizada para lectura
+- Interacciones suaves con transiciones CSS
+- Modal de pantalla completa para visualización de imágenes
+- Checkboxes interactivos con feedback visual
 
-- **👁️ Modos de Vista Duales**
-  - **Vista Detallada**: Contenido completo con explicaciones extensas
-  - **Vista Compacta**: Resúmenes ejecutivos para lectura rápida
+## 📚 Contenido Cubierto
 
-- **✅ Sistema de Seguimiento Interactivo**
-  - Marcar puntos individuales como leídos
-  - Botón de "Marcar todos como leídos"
-  - Botón de "Marcar como no leídos"
-  - Reiniciar progreso con un clic
+El dashboard presenta **7 puntos fundamentales** sobre Legal Prompting:
 
-- **🎨 Categorización Visual**
-  - Etiquetas de categoría con código de colores:
-    - 🟦 Estado Actual & Implementación
-    - 🟪 Normativa & Regulación
-    - 🟩 Evolución & LegalTech
-    - 🟧 Enfoque & Sesgos
-    - 🟨 Definición & Calibración
-    - ⚫ Metodología & Contexto
+1. **Por qué importa**: Relevancia del prompt para los abogados
+2. **Definición**: Qué es un prompt y por qué uno genérico no es suficiente
+3. **Legal Prompting**: Formulación estratégica para contenido jurídico preciso
+4. **Técnicas**:
+   - Básicas: zero-shot, one-shot, few-shot
+   - Avanzadas: Chain of Thought (CoT), Tree of Thought (ToT), Self-consistency
+5. **Activación**: Cómo implementar técnicas avanzadas con instrucciones claras
+6. **Elementos Esenciales**: Componentes de un prompt legal efectivo
+7. **Riesgos**: Alucinaciones, sesgos y responsabilidad profesional
 
-- **📱 Diseño Responsive**
-  - Adaptable a dispositivos móviles, tablets y desktop
-  - Sidebar dinámico que se adapta al scroll
-  - Optimizado para todas las resoluciones
+## 🛠️ Stack Técnico
 
----
+- **HTML5**: Estructura semántica
+- **CSS3**:
+  - Variables CSS para temas consistentes
+  - Flexbox y Grid para layouts modernos
+  - Media queries para responsividad
+  - Sticky positioning para sidebar
+- **JavaScript Vanilla**:
+  - Sin dependencias externas
+  - Event delegation para optimización
+  - Cálculo dinámico de posicionamiento
+  - Gestión de estado local
 
-## 🎓 Contenido del Conversatorio
+## 🚀 Instalación y Uso
 
-### 📌 Temas Abordados
+### Requisitos
+- Navegador web moderno (Chrome, Firefox, Edge, Safari)
+- Servidor web local o GitHub Pages para despliegue
 
-1. **❓ Por qué importa** - Relevancia del prompt en la práctica jurídica
-2. **✍️ Definición** - ¿Qué es un prompt y por qué los genéricos no funcionan?
-3. **⚖️ Legal Prompting** - Formulación estratégica para contenido jurídico preciso
-4. **🧩 Técnicas** - Básicas (zero/one/few-shot) y avanzadas (CoT, ToT, Self-consistency)
-5. **🔧 Activación** - Cómo activar técnicas avanzadas con instrucciones claras
-6. **📚 Elementos Esenciales** - Componentes clave de un prompt legal efectivo
-7. **⚠️ Riesgos** - Alucinaciones, sesgos y responsabilidad profesional
-
----
-
-## 🚀 Cómo Usar
-
-### 📥 Instalación
-
-```bash
-# Clonar el repositorio
-git clone https://github.com/tu-usuario/conversatorio-club-ia-legal.git
-
-# Navegar al directorio
-cd conversatorio-club-ia-legal
-
-# Abrir index.html en tu navegador
+### Archivos Necesarios
+```
+Dashboard/
+├── index.html
+├── README.md
+├── club_ia_legal_banner_v3.png
+└── prompt fondo blanco.png (o "Prompt fondo blanco.png")
 ```
 
-### 🌐 GitHub Pages
+### Ejecución Local
+1. Clona el repositorio
+2. Asegúrate de que las imágenes estén en el mismo directorio
+3. Abre `index.html` en tu navegador
 
-Este proyecto está configurado para ser desplegado fácilmente en GitHub Pages:
+### Despliegue en GitHub Pages
+1. Sube los archivos a tu repositorio
+2. Activa GitHub Pages en la configuración del repositorio
+3. Selecciona la rama y carpeta correspondiente
 
-1. Ve a **Settings** → **Pages**
-2. Selecciona la rama `main` y carpeta `/root`
-3. Guarda y espera unos minutos
-4. Tu sitio estará disponible en: `https://tu-usuario.github.io/conversatorio-club-ia-legal`
+## 📱 Características Responsivas
 
----
+El dashboard se adapta a diferentes tamaños de pantalla:
+- **Desktop (>1024px)**: Layout de dos columnas con sidebar lateral
+- **Tablet (768px - 1024px)**: Layout de una columna con sidebar arriba
+- **Mobile (<768px)**: Vista optimizada para móviles
 
-## 🛠️ Tecnologías
+## 🎯 Funcionalidades Avanzadas
 
-- **HTML5** - Estructura semántica
-- **CSS3** - Diseño moderno con variables CSS y grid/flexbox
-- **JavaScript Vanilla** - Interactividad sin dependencias externas
-- **LocalStorage** (opcional) - Persistencia de progreso del usuario
+### Sistema de Tracking
+- Almacenamiento local del progreso de lectura
+- Estadísticas en tiempo real
+- Barra de progreso visual
 
----
+### Sidebar Inteligente
+- Posicionamiento sticky con centrado vertical dinámico
+- Se ajusta automáticamente al hacer scroll
+- Responsive al redimensionar la ventana
 
-## 🎨 Personalización
+### Modal Interactivo
+- Visualización de imágenes en pantalla completa
+- Cierre mediante botón X o clic fuera de la imagen
+- Transiciones suaves
 
-### Colores de Categorías
+## 🤝 Contribuciones
 
-Puedes personalizar los colores de las categorías editando las variables CSS en `index.html`:
+Las contribuciones son bienvenidas. Para contribuir:
 
-```css
-.tag-estado-actual { background-color: #17A2B8; }
-.tag-normativa { background-color: #6F42C1; }
-.tag-evolucion { background-color: #20C997; }
-/* ... más categorías */
-```
-
-### Agregar Nuevos Puntos
-
-Para agregar más puntos al conversatorio, duplica un bloque `.point-card` existente y modifica:
-
-```html
-<div class="point-card" data-point="8" data-summary="Tu resumen aquí">
-  <div class="category-tag tag-nombre">
-    <span class="category-icon">🔖</span>
-    <span class="category-name">Categoría</span>
-  </div>
-  <div class="point-header">
-    <div class="point-number">8</div>
-  </div>
-  <div class="point-content">
-    <div class="point-text">Tu contenido completo aquí...</div>
-    <div class="point-read-checkbox"></div>
-  </div>
-</div>
-```
-
----
-
-## 👥 Contribución
-
-¡Las contribuciones son bienvenidas! Si deseas mejorar esta página:
-
-1. 🍴 Fork el proyecto
-2. 🌿 Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. 💾 Commit tus cambios (`git commit -m 'Add: Amazing Feature'`)
-4. 📤 Push a la rama (`git push origin feature/AmazingFeature`)
-5. 🔀 Abre un Pull Request
-
----
+1. Fork el repositorio
+2. Crea una rama para tu feature (`git checkout -b feature/NuevaCaracteristica`)
+3. Commit tus cambios (`git commit -m 'Agrega nueva característica'`)
+4. Push a la rama (`git push origin feature/NuevaCaracteristica`)
+5. Abre un Pull Request
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## 👥 Autor
+
+**Club IA Legal**
+- Ponente: [María Angélica Ramírez Ramírez](https://www.linkedin.com/in/angelicaramirezabogada/)
+- Fecha del Evento: Domingo 19 de octubre de 2025
+
+## 🔗 Enlaces
+
+- [Club IA Legal](https://club-ia-legal.com) (si aplica)
+- [Repositorio GitHub](https://github.com/hackbug38/Dashboards-Conversatorios-Club-IA-Legal)
+- [LinkedIn - Ponente](https://www.linkedin.com/in/angelicaramirezabogada/)
+
+## 📝 Notas de Versión
+
+### Versión 2.0 (Actualización)
+- ✨ Nuevo banner con logo del Club IA Legal
+- 🎨 Sidebar reposicionado con sticky inteligente
+- 🖼️ Modal para visualización de mapa mental de prompting
+- 📊 Mejoras en la UI/UX del sistema de progreso
+- 🎯 Layout mejorado con Grid CSS
+- 📱 Optimizaciones responsivas
+
+### Versión 1.0 (Original)
+- 🚀 Lanzamiento inicial del dashboard
+- 📚 7 puntos fundamentales sobre Legal Prompting
+- ✅ Sistema de tracking de lectura
+- 🎨 Dos modos de visualización
 
 ---
 
-## 📞 Contacto
-
-**Club IA Legal** - Comité Laboratorio
-
-- 🌐 Website: https://clubialegal.org/
-- 💼 LinkedIn: https://linkedin.com/company/club-ia-legal
-- 🤖 Nas.io: https://lnkd.in/d7uDCMJM
-- 📧 Email: contacto@clubialegal.com
-
-**Ponente**: María Angélica Ramírez Ramírez
-
----
-
-## 🙏 Agradecimientos
-
-- Al **Club IA Legal** por organizar este conversatorio
-- A **María Angélica Ramírez Ramírez** por compartir su conocimiento
-- A todos los participantes que hicieron posible este evento
-
----
-
-<div align="center">
-
-**⭐ Si te resultó útil este proyecto, considera darle una estrella en GitHub ⭐**
-
-Hecho con ❤️ por el Club IA Legal
-
-</div>
+**Desarrollado con ❤️ para la comunidad del Club IA Legal**
