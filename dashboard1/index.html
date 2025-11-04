@@ -57,18 +57,29 @@
       background: #FFFFFF;
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
-      padding: var(--space-24);
+      padding: 0;
       margin-bottom: var(--space-24);
       text-align: center;
       box-shadow: var(--shadow-md);
+      overflow: hidden;
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-12);
-      margin-bottom: var(--space-16);
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .header-content {
+      padding: var(--space-24);
     }
 
     .logo-icon {
@@ -93,6 +104,7 @@
       font-weight: 700;
       margin-bottom: var(--space-8);
       color: var(--color-text);
+      margin-top: 0;
     }
 
     .event-subtitle {
@@ -565,19 +577,17 @@
     <!-- Header -->
     <header class="header">
       <div class="logo">
-        <div class="logo-icon">🧠⚖️</div>
-        <div class="logo-text">
-          <h1>CLUB IA LEGAL</h1>
-          <p>Inteligencia Artificial &amp; Derecho</p>
-        </div>
+        <img src="club_ia_legal_banner_v3.png" alt="Club IA Legal">
       </div>
-      <h1 class="event-title">Conversatorio Club IA Legal</h1>
-      <h2 class="event-subtitle">Gestión de riesgos en sistemas de inteligencia artificial</h2>
-      <div class="event-meta">
-        <span>📅 Domingo 12 de octubre de 2025</span>
-        <span>👤 Ponente: <a href="https://www.linkedin.com/in/luisenriqueza/" target="_blank">Luis Enríquez</a></span>
-        <span>📄 Paper: <a href="https://arxiv.org/abs/2509.18394" target="_blank">Ver referencia</a></span>
-        <span>📊 20 puntos clave</span>
+      <div class="header-content">
+        <h1 class="event-title">Conversatorio Club IA Legal</h1>
+        <h2 class="event-subtitle">Gestión de riesgos en sistemas de inteligencia artificial</h2>
+        <div class="event-meta">
+          <span>📅 Domingo 12 de octubre de 2025</span>
+          <span>👤 Ponente: <a href="https://www.linkedin.com/in/luisenriqueza/" target="_blank">Luis Enríquez</a></span>
+          <span>📄 Paper: <a href="https://arxiv.org/abs/2509.18394" target="_blank">Ver referencia</a></span>
+          <span>📊 20 puntos clave</span>
+        </div>
       </div>
     </header>
 
