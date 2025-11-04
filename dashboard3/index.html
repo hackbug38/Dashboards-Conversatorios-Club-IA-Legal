@@ -671,6 +671,7 @@
         <button class="btn active" id="detailedView">📝 Vista Detallada</button>
         <button class="btn" id="compactView">📋 Vista Compacta</button>
         <button class="btn" id="mentalMapBtn">🧠 Mapa Mental</button>
+        <button class="btn" id="audiovisualBtn">🎬 Resumen Audiovisual</button>
       </div>
     </div>
 
@@ -1031,6 +1032,11 @@
       // Mental Map Button - Navigate to mental map page
       document.getElementById('mentalMapBtn').addEventListener('click', function() {
         window.location.href = 'mapa_mental.html';
+      });
+
+      // Audiovisual Button - Navigate to audiovisual page
+      document.getElementById('audiovisualBtn').addEventListener('click', function() {
+        window.location.href = 'resumen_audiovisual.html';
       });
 
       // no-op: delegated listeners handle checkbox clicks
