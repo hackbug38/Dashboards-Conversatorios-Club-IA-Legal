@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Club IA Legal - Prompt y acción</title>
+  <style>
+    :root {
+      /* Professional Color Tokens */
+      --color-white: rgba(255, 255, 255, 1);
+      --color-cream-50: rgba(252, 252, 249, 1);
+      --color-cream-100: rgba(255, 255, 253, 1);
+      --color-gray-200: rgba(245, 245, 245, 1);
+      --color-gray-300: rgba(167, 169, 169, 1);
+      --color-slate-500: rgba(98, 108, 113, 1);
+      --color-teal-500: rgba(33, 128, 141, 1);
+      --color-teal-600: rgba(29, 116, 128, 1);
+      --color-background: var(--color-cream-50);
+      --color-surface: var(--color-cream-100);
+      --color-text: #2C3E50;
+      --color-text-secondary: #6C757D;
+      --color-primary: #4A9B8E;
+      --color-primary-hover: #3e8277;
+      --color-border: #E9ECEF;
+      --color-success: #4A9B8E;
+      --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --space-8: 8px;
+      --space-12: 12px;
+      --space-16: 16px;
+      --space-20: 20px;
+      --space-24: 24px;
+      --radius-base: 8px;
+      --radius-lg: 12px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family-base);
+      background: #FFFFFF;
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-20);
+    }
+
+    /* Header */
+    .header {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 0;
+      margin-bottom: var(--space-24);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .logo {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .header-content {
+      padding: var(--space-24);
+    }
+
+    .logo-icon {
+      font-size: 32px;
+    }
+
+    .logo-text h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .logo-text p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+
+    .event-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: var(--space-8);
+      color: var(--color-text);
+    }
+
+    .event-subtitle {
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-16);
+    }
+
+    .event-meta {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-24);
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+
+    .event-meta span {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+    }
+
+    .event-meta a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .event-meta a:hover {
+      text-decoration: underline;
+    }
+
+    /* Instructions */
+    .instructions {
+      background: rgba(74, 155, 142, 0.05);
+      border: 1px solid rgba(74, 155, 142, 0.2);
+      border-radius: var(--radius-base);
+      padding: var(--space-16);
+      margin-bottom: var(--space-24);
+      text-align: center;
+    }
+
+    .instructions p {
+      margin: 0;
+      color: var(--color-text-secondary);
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: var(--space-24);
+      gap: var(--space-16);
+      flex-wrap: wrap;
+    }
+
+    /* hide the tabs pill (visual button) as requested */
+    .tabs {
+      display: none;
+    }
+
+    .tab {
+      padding: var(--space-12) var(--space-20);
+      border: none;
+      background: transparent;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .tab.active {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .tab:hover:not(.active) {
+      background: #F8F9FA;
+    }
+
+    .view-controls {
+      display: flex;
+      gap: var(--space-8);
+      justify-content: center;
+    }
+
+    .btn {
+      padding: var(--space-8) var(--space-16);
+      border: 1px solid var(--color-border);
+      background: white;
+      color: var(--color-text);
+      cursor: pointer;
+      border-radius: var(--radius-base);
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+    }
+
+    .btn:hover {
+      background: #F8F9FA;
+    }
+
+    .btn.active {
+      background: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+    }
+
+    .btn--primary {
+      background: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+    }
+
+    .btn--primary:hover {
+      background: var(--color-primary-hover);
+    }
+
+    /* Main Layout */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: var(--space-24);
+      align-items: start;
+    }
+
+    .content-area {
+      min-height: 400px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-20);
+      padding-bottom: var(--space-16);
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .section-count {
+      background: rgba(74, 155, 142, 0.1);
+      color: var(--color-primary);
+      padding: 4px var(--space-12);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Points Grid */
+    .points-grid {
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    .points-grid.compact {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .point-card {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-20);
+      transition: all 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .point-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary);
+    }
+
+    .point-card.checked {
+      background: rgba(74, 155, 142, 0.05);
+      border-color: var(--color-primary);
+    }
+
+    .point-header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: var(--space-12);
+    }
+
+    .point-number {
+      width: 24px;
+      height: 24px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+
+
+    .point-content {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--color-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: var(--space-12);
+    }
+
+    .point-text {
+      flex: 1;
+    }
+
+    .point-read-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--color-border);
+      border-radius: 4px;
+      background: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+      margin-left: var(--space-8);
+      position: relative;
+      user-select: none;
+    }
+
+    .point-read-checkbox:hover {
+      border-color: var(--color-primary);
+      transform: scale(1.15);
+      box-shadow: 0 0 0 2px rgba(74, 155, 142, 0.2);
+    }
+
+    .point-read-checkbox.checked {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+
+    /* CSS checkmark */
+    .point-read-checkbox.checked::after {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 3px;
+      width: 6px;
+      height: 12px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+
+    /* Category Tags */
+    .category-tag {
+      position: absolute;
+      top: var(--space-12);
+      right: var(--space-12);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px var(--space-8);
+      border-radius: var(--radius-base);
+      font-size: 11px;
+      font-weight: 500;
+      color: white;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+      z-index: 10;
+    }
+
+    .category-tag .category-icon {
+      font-size: 12px;
+    }
+
+    .category-tag .category-name {
+      display: inline;
+    }
+
+    /* Category Colors */
+    .tag-estado-actual { background-color: #17A2B8; }
+    .tag-normativa { background-color: #6F42C1; }
+    .tag-evolucion { background-color: #20C997; }
+    .tag-enfoque { background-color: #FD7E14; }
+    .tag-definicion { background-color: #FFC107; color: #333; }
+    .tag-metodologia { background-color: #6C757D; }
+    .tag-dinamica { background-color: #17A2B8; }
+    .tag-regulacion { background-color: #28A745; }
+    .tag-contexto { background-color: #6C757D; }
+    .tag-implementacion { background-color: #17A2B8; }
+    .tag-tecnologia { background-color: #007BFF; }
+    .tag-comprension { background-color: #E83E8C; }
+    .tag-calibracion { background-color: #FFC107; color: #333; }
+    .tag-legaltech { background-color: #28A745; }
+    .tag-sesgos { background-color: #FD7E14; }
+    .tag-justicia { background-color: #DC3545; }
+
+    /* Category List in Sidebar */
+    .category-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    /* categories panel removed per user request */
+
+    .category-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-8);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base);
+      font-size: 12px;
+    }
+
+    .category-item .category-tag {
+      position: static;
+      padding: 2px var(--space-6);
+      border-radius: 4px;
+      font-size: 10px;
+    }
+
+    .category-item .category-tag .category-name {
+      display: inline;
+    }
+
+    .category-count {
+      background: var(--color-primary);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: 500;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    /* Sidebar - sticky on the left side */
+    .sidebar {
+  position: sticky;
+  top: 20px;
+  width: 100%;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-16);
+  box-shadow: var(--shadow-md);
+  align-self: start;
+    }
+
+    .sidebar-section {
+      margin-bottom: var(--space-12);
+    }
+
+    .sidebar-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .sidebar-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: var(--space-8);
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .stat:last-child {
+      border-bottom: none;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+
+    .stat-value {
+      font-weight: 600;
+      color: var(--color-primary);
+      font-size: 14px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #F8F9FA;
+      border-radius: 4px;
+      margin-top: var(--space-6);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--color-primary);
+      transition: width 0.3s;
+      width: 0%;
+    }
+
+    .btn-full {
+      width: 100%;
+      justify-content: center;
+      margin-bottom: var(--space-6);
+      padding: var(--space-8) var(--space-12);
+      font-size: 13px;
+    }
+
+    .btn-full:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: static;
+        width: 100%;
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: var(--space-16);
+      }
+
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .tabs {
+        justify-content: stretch;
+      }
+
+      .tab {
+        flex: 1;
+        text-align: center;
+      }
+
+      .points-grid.compact {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Modal styles for mental map */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow: auto;
+    }
+
+    .modal.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      margin: auto;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      background: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .modal-close:hover {
+      background: rgba(74, 155, 142, 0.8);
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <img src="club_ia_legal_banner_v3.png" alt="Club IA Legal">
+      </div>
+      <div class="header-content">
+        <h1 class="event-title">Conversatorio Club IA Legal</h1>
+        <h2 class="event-subtitle">Cómo usar la IA en la práctica jurídica, del prompt a la acción</h2>
+        <div class="event-meta">
+          <span>📅 Domingo 19 de octubre de 2025</span>
+          <span>👤 Ponente: <a href="https://www.linkedin.com/in/angelicaramirezabogada/" target="_blank" id="ponenteLink">María Angélica Ramírez Ramírez</a></span>
+          <span>📊 Puntos más relevantes: 7</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Instructions -->
+    <div class="instructions">
+      <p>Lee cada punto y marca el checkbox al final para indicar que lo completaste. Ve tu progreso de lectura actualizarse automáticamente en tiempo real.</p>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="tabs">
+        <button class="tab active" data-section="hot-takes">Hot takes</button>
+      </div>
+
+      <div class="view-controls">
+        <button class="btn active" id="detailedView">📝 Vista Detallada</button>
+        <button class="btn" id="compactView">📋 Vista Compacta</button>
+        <button class="btn" id="mentalMapBtn">🧠 Mapa Mental Prompting</button>
+      </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <h4 class="sidebar-title">📊 Estadísticas</h4>
+          <div class="stat">
+            <span class="stat-label">Total de puntos</span>
+            <span class="stat-value">7</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h4 class="sidebar-title">📈 Progreso de lectura</h4>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p class="stat-label" style="margin-top: 8px; text-align: center;" id="progressText">0 de 7 completados (0%)</p>
+          <button class="btn btn-full" onclick="resetProgress()">🔄 Reiniciar Progreso</button>
+        </div>
+
+        <div class="sidebar-section">
+          <h4 class="sidebar-title">⚡ Acciones rápidas</h4>
+          <button class="btn btn-full" onclick="checkAll()">✅ Marcar todos como leídos</button>
+          <button class="btn btn-full" onclick="uncheckAll()">❌ Marcar como no leídos</button>
+        </div>
+      </aside>
+
+      <div class="content-area">
+        <section class="section active" id="hot-takes">
+          <div class="section-header">
+            <h3 class="section-title">Puntos más relevantes</h3>
+            <span class="section-count">7 puntos</span>
+          </div>
+          <div class="points-grid">
+            <div class="point-card" data-point="1" data-summary="El prompt permite obtener mejores respuestas de IA para impulsar el trabajo jurídico sin reemplazar al abogado.">
+              <div class="category-tag tag-estado-actual">
+                <span class="category-icon">❓</span>
+                <span class="category-name">Por qué importa</span>
+              </div>
+              <div class="point-header">
+                <div class="point-number">1</div>
+              </div>
+              <div class="point-content">
+                <div class="point-text">¿Por qué importa el prompt para los abogados? Porque dominarlo nos permite obtener las mejores respuestas de una IA. La IA es una herramienta para impulsar el trabajo del abogado: debemos aprovecharla para mejorar nuestros escritos y argumentaciones, pero no nos va (ni debe) reemplazar. Cómo nos comunicamos adecuadamente con una IA: a través de un buen prompt.</div>
+                <div class="point-read-checkbox"></div>
+              </div>
+            </div>
+
+            <div class="point-card" data-point="2" data-summary="Un prompt es una instrucción a la IA; un prompt genérico no es suficiente para usos jurídicos exigentes.">
+              <div class="category-tag tag-definicion">
+                <span class="category-icon">✍️</span>
+                <span class="category-name">Definición</span>
+              </div>
+              <div class="point-header">
+                <div class="point-number">2</div>
+              </div>
+              <div class="point-content">
+                <div class="point-text">¿Qué es un prompt? Un prompt es una instrucción, pregunta o entrada de texto que se le da a un sistema de IA para que genere una respuesta específica o realice una tarea. Es el punto de partida de una interacción (input) para que la IA genere un output. Sin embargo, un prompt genérico no es suficiente para usos jurídicos exigentes.</div>
+                <div class="point-read-checkbox"></div>
+              </div>
+            </div>
+
+            <div class="point-card" data-point="3" data-summary="Legal prompting: formulación estratégica de directrices para generar contenido jurídico preciso y especializado.">
+              <div class="category-tag tag-legaltech">
+                <span class="category-icon">⚖️</span>
+                <span class="category-name">Legal prompting</span>
+              </div>
+              <div class="point-header">
+                <div class="point-number">3</div>
+              </div>
+              <div class="point-content">
+                <div class="point-text">¿Qué es legal prompting? Es la formulación de preguntas o directrices estratégicamente dirigidas a la IA para que genere contenido jurídico preciso: redactar demandas, cláusulas, contratos, análisis de riesgos, resumir o encontrar jurisprudencia aplicable. Los abogados debemos trabajar con prompts específicos que incorporen nuestro contexto, especialidad y país.</div>
+                <div class="point-read-checkbox"></div>
+              </div>
+            </div>
+
+            <div class="point-card" data-point="4" data-summary="Técnicas básicas (zero/one/few-shot) y avanzadas (CoT, ToT, Self-consistency) para legal prompting.">
+              <div class="category-tag tag-metodologia">
+                <span class="category-icon">🧩</span>
+                <span class="category-name">Técnicas</span>
+              </div>
+              <div class="point-header">
+                <div class="point-number">4</div>
+              </div>
+              <div class="point-content">
+                <div class="point-text">
+                  Técnicas de legal prompting (básicas y avanzadas):
+                  <ul>
+                    <li><strong>Básicas:</strong> zero-shot (sin ejemplos), one-shot (un ejemplo), few-shot (varios ejemplos) — útiles para redacción de documentos.</li>
+                    <li><strong>Avanzadas:</strong> Chain of Thought (CoT) — pedir razonamiento paso a paso; Tree of Thought (ToT) — explorar rutas alternativas; Self-consistency/Auto-CoT — generar varias rutas y elegir la más coherente.</li>
+                  </ul>
+                </div>
+                <div class="point-read-checkbox"></div>
+              </div>
+            </div>
+
+            <div class="point-card" data-point="5" data-summary="Activar técnicas avanzadas con instrucciones claras: análisis paso a paso, evaluar alternativas, generar soluciones.">
+              <div class="category-tag tag-comprension">
+                <span class="category-icon">🔧</span>
+                <span class="category-name">Activación</span>
+              </div>
+              <div class="point-header">
+                <div class="point-number">5</div>
+              </div>
+              <div class="point-content">
+                <div class="point-text">¿Cómo activar técnicas avanzadas? No hay comandos ocultos: el modelo responde a la instrucción. Ejemplos: para CoT — "analiza el caso paso a paso antes de responder"; para ToT — "evalúa distintas interpretaciones, analiza pros y contras y elige la más sólida"; para Self-Consistency — "genera tres soluciones, analiza cuál es la más coherente y explica por qué".</div>
+                <div class="point-read-checkbox"></div>
+              </div>
+            </div>
+
+            <div class="point-card" data-point="6" data-summary="Elementos del prompt legal: tarea, contexto jurídico, rol de IA, formato, tono y restricciones jurisdiccionales.">
+              <div class="category-tag tag-definicion">
+                <span class="category-icon">📚</span>
+                <span class="category-name">Elementos esenciales</span>
+              </div>
+              <div class="point-header">
+                <div class="point-number">6</div>
+              </div>
+              <div class="point-content">
+                <div class="point-text">Elementos de un prompt legal: la tarea (acción clara), el contexto jurídico completo (hechos y fundamentos), el rol de la IA (actuar como experto), el formato de salida, el tono/estilo y restricciones o exclusiones (ej. solo jurisdicción peruana). Si faltan fundamentos, usar herramientas de búsqueda (p.ej. Perplexity) para compilar normas y jurisprudencia antes de pedir redacciones.</div>
+                <div class="point-read-checkbox"></div>
+              </div>
+            </div>
+
+            <div class="point-card" data-point="7" data-summary="Las IA pueden alucinar o tener sesgos; anonimizar datos y verificar críticamente todo output jurídico.">
+              <div class="category-tag tag-sesgos">
+                <span class="category-icon">⚠️</span>
+                <span class="category-name">Riesgos</span>
+              </div>
+              <div class="point-header">
+                <div class="point-number">7</div>
+              </div>
+              <div class="point-content">
+                <div class="point-text">Riesgos y sesgos: las IA pueden alucinar, presentar sesgos o discriminación. No incluir datos sensibles en prompts (anonimizar). La responsabilidad profesional exige revisar, verificar y validar críticamente cualquier output jurídico generado por IA.</div>
+                <div class="point-read-checkbox"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  <!-- Modal for Mental Map -->
+  <div id="mentalMapModal" class="modal">
+    <span class="modal-close" id="closeModal">&times;</span>
+    <div class="modal-content">
+      <img src="prompt-fondo-blanco.png" alt="Mapa Mental Prompting">
+    </div>
+  </div>
+
+
+
+
+  <script>
+  // Global state
+  let currentSection = 'hot-takes';
+    let isCompactView = false;
+    let checkedPoints = new Set();
+
+    // Initialize app
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('✅ App inicializada correctamente');
+      setupEventListeners();
+      
+      // Use event delegation: clicking on a point-card or its checkbox toggles the read state
+      const grids = document.querySelectorAll('.points-grid');
+      console.log('🔍 Grids encontrados:', grids.length);
+      
+      grids.forEach(grid => {
+        grid.addEventListener('click', function(e) {
+          console.log('🖱️ Click detectado en grid', e.target);
+          const checkbox = e.target.closest('.point-read-checkbox');
+          const card = e.target.closest('.point-card');
+          
+          if (checkbox) {
+            console.log('✅ Click en checkbox');
+            e.preventDefault();
+            e.stopPropagation();
+            toggleReadCheck(checkbox);
+          } else if (card) {
+            console.log('📦 Click en card');
+            // if user clicks elsewhere on the card, toggle the checkbox inside
+            const innerCheckbox = card.querySelector('.point-read-checkbox');
+            if (innerCheckbox) {
+              toggleReadCheck(innerCheckbox);
+            }
+          }
+        });
+      });
+      
+      console.log('🔧 Event listeners agregados a', grids.length, 'grids');
+
+      updateStats();
+      adjustSidebarPosition();
+
+      // Adjust sidebar position on scroll
+      window.addEventListener('scroll', adjustSidebarPosition);
+      window.addEventListener('resize', adjustSidebarPosition);
+    });
+
+    // Adjust sidebar position to center it vertically
+    function adjustSidebarPosition() {
+      const sidebar = document.querySelector('.sidebar');
+      if (!sidebar) return;
+
+      const sidebarHeight = sidebar.offsetHeight;
+      const viewportHeight = window.innerHeight;
+
+      // Calculate the top position to center the sidebar
+      const centeredTop = Math.max(20, (viewportHeight - sidebarHeight) / 2);
+
+      sidebar.style.top = `${centeredTop}px`;
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+      // Tab switching
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+          const section = this.dataset.section;
+          switchSection(section);
+        });
+      });
+
+      // View controls
+      document.getElementById('detailedView').addEventListener('click', function() {
+        setViewMode(false);
+      });
+
+      document.getElementById('compactView').addEventListener('click', function() {
+        setViewMode(true);
+      });
+
+      // Mental Map Modal
+      document.getElementById('mentalMapBtn').addEventListener('click', function() {
+        document.getElementById('mentalMapModal').classList.add('active');
+      });
+
+      document.getElementById('closeModal').addEventListener('click', function() {
+        document.getElementById('mentalMapModal').classList.remove('active');
+      });
+
+      // Close modal when clicking outside the image
+      document.getElementById('mentalMapModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('active');
+        }
+      });
+
+      // no-op: delegated listeners handle checkbox clicks
+
+      console.log('🔧 Event listeners configurados para', document.querySelectorAll('.point-read-checkbox').length, 'checkboxes');
+
+
+    }
+
+    // Switch between sections
+    function switchSection(sectionId) {
+      console.log('🔄 Cambiando a sección:', sectionId);
+      currentSection = sectionId;
+      
+      // Update tabs
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.dataset.section === sectionId) {
+          tab.classList.add('active');
+        }
+      });
+
+      // Update sections
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+        if (section.id === sectionId) {
+          section.classList.add('active');
+        }
+      });
+
+      // Immediately update progress for the new section
+      updateStats();
+    }
+
+    // Set view mode (detailed vs compact)
+    function setViewMode(compact) {
+      console.log('👁️ Cambiando vista:', compact ? 'compacta' : 'detallada');
+      isCompactView = compact;
+      
+      document.getElementById('detailedView').classList.toggle('active', !compact);
+      document.getElementById('compactView').classList.toggle('active', compact);
+      
+      document.querySelectorAll('.points-grid').forEach(grid => {
+        grid.classList.toggle('compact', compact);
+      });
+      
+      // Toggle between full text and summary
+      document.querySelectorAll('.point-card').forEach(card => {
+        const pointText = card.querySelector('.point-text');
+        const summary = card.dataset.summary;
+        
+        if (compact && summary) {
+          // Store original text if not already stored
+          if (!card.dataset.fullText) {
+            card.dataset.fullText = pointText.innerHTML;
+          }
+          // Show summary
+          pointText.innerHTML = summary;
+        } else if (card.dataset.fullText) {
+          // Restore full text
+          pointText.innerHTML = card.dataset.fullText;
+        }
+      });
+    }
+
+    // Toggle read checkbox (new position at end of text)
+    function toggleReadCheck(checkbox) {
+      if (!checkbox) {
+        console.error('❌ Checkbox es null');
+        return;
+      }
+      console.log('📋 Checkbox clickeado');
+      const card = checkbox.closest('.point-card');
+      if (!card) {
+        console.error('❌ Card no encontrada');
+        return;
+      }
+      const pointId = card.dataset.point;
+      console.log('🔍 Point ID:', pointId);
+      
+      if (checkedPoints.has(pointId)) {
+        checkedPoints.delete(pointId);
+        checkbox.classList.remove('checked');
+        card.classList.remove('checked');
+        console.log('❌ Desmarcado punto:', pointId);
+      } else {
+        checkedPoints.add(pointId);
+        checkbox.classList.add('checked');
+        card.classList.add('checked');
+        console.log('✅ Marcado punto:', pointId);
+      }
+      
+      console.log('📊 Puntos marcados:', Array.from(checkedPoints));
+      console.log('📊 Checkbox tiene clase checked:', checkbox.classList.contains('checked'));
+      updateStats();
+    }
+
+    // Update statistics
+    function updateStats() {
+      console.log('📊 UpdateStats llamado');
+      const currentSectionPoints = getCurrentSectionPoints();
+      const checkedInSection = getCheckedInCurrentSection();
+      const progress = currentSectionPoints > 0 ? (checkedInSection / currentSectionPoints) * 100 : 0;
+
+      console.log('Puntos en sección:', currentSectionPoints);
+      console.log('Puntos marcados:', checkedInSection);
+      console.log('Progreso:', progress + '%');
+
+      // Update sidebar stats - removed currentSectionCount as it was deleted
+      // Update total points in sidebar
+      const totalPoints = document.querySelectorAll('.point-card').length;
+      const statValues = document.querySelectorAll('.stat-value');
+      if (statValues && statValues.length > 0) {
+        statValues[0].textContent = totalPoints;
+      }
+
+      // Update progress
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+
+      if (progressFill && progressText) {
+        progressFill.style.width = progress + '%';
+        progressText.textContent = `${checkedInSection} de ${currentSectionPoints} completados (${Math.round(progress)}%)`;
+        console.log('✅ Progreso actualizado:', progressText.textContent);
+      } else {
+        console.error('No se encontraron elementos de progreso');
+      }
+    
+    }
+
+    // Get current section point count dynamically
+    function getCurrentSectionPoints() {
+      const activeSection = document.getElementById(currentSection);
+      if (!activeSection) return 0;
+      return activeSection.querySelectorAll('.point-card').length;
+    }
+
+    // category list logic removed per user request
+
+    // Get checked points in current section
+    function getCheckedInCurrentSection() {
+      let count = 0;
+      const activeSection = document.getElementById(currentSection);
+      if (activeSection) {
+        const sectionCheckboxes = activeSection.querySelectorAll('.point-read-checkbox.checked');
+        count = sectionCheckboxes.length;
+        console.log(`📊 Puntos marcados en sección ${currentSection}:`, count);
+      }
+      return count;
+    }
+
+    // Check all points in current section
+    function checkAll() {
+      console.log('✅ Marcando todos los puntos de la sección:', currentSection);
+      const section = document.getElementById(currentSection);
+      if (!section) {
+        console.error('Sección no encontrada:', currentSection);
+        return;
+      }
+      
+      const checkboxes = section.querySelectorAll('.point-read-checkbox');
+      console.log('Total checkboxes encontrados:', checkboxes.length);
+      
+      checkboxes.forEach(checkbox => {
+        const card = checkbox.closest('.point-card');
+        const pointId = card.dataset.point;
+        
+        if (!checkbox.classList.contains('checked')) {
+          checkedPoints.add(pointId);
+          checkbox.classList.add('checked');
+          checkbox.innerHTML = '✓';
+          card.classList.add('checked');
+          console.log('✅ Marcado punto:', pointId);
+        }
+      });
+      
+      console.log('Llamando updateStats...');
+      updateStats();
+      console.log('UpdateStats completado');
+    }
+
+    // Uncheck all points in current section
+    function uncheckAll() {
+      console.log('❌ Desmarcando todos los puntos de la sección:', currentSection);
+      const section = document.getElementById(currentSection);
+      const checkboxes = section.querySelectorAll('.point-read-checkbox');
+      
+      checkboxes.forEach(checkbox => {
+        const card = checkbox.closest('.point-card');
+        const pointId = card.dataset.point;
+        
+        if (checkbox.classList.contains('checked')) {
+          checkedPoints.delete(pointId);
+          checkbox.classList.remove('checked');
+          checkbox.innerHTML = '';
+          card.classList.remove('checked');
+          console.log('❌ Desmarcado punto:', pointId);
+        }
+      });
+      
+      updateStats();
+    }
+
+    // Reset progress
+    function resetProgress() {
+      if (checkedPoints.size === 0) {
+        alert('No hay progreso de lectura para reiniciar.');
+        return;
+      }
+      
+      if (confirm(`¿Reiniciar todo el progreso de lectura? Esto marcará ${checkedPoints.size} puntos como no leídos.`)) {
+        console.log('🔄 Reiniciando progreso...');
+        
+        // Clear all checkboxes
+        document.querySelectorAll('.point-read-checkbox').forEach(checkbox => {
+          checkbox.classList.remove('checked');
+          checkbox.innerHTML = '';
+          checkbox.closest('.point-card').classList.remove('checked');
+        });
+        
+        checkedPoints.clear();
+        console.log('✅ Todos los checkboxes limpiados');
+        updateStats();
+        
+        // Show success message
+        showMessage('✅ Progreso de lectura reiniciado correctamente', 'success');
+      }
+    }
+
+
+
+    // Show message
+    function showMessage(message, type = 'info') {
+      const messageDiv = document.createElement('div');
+      messageDiv.textContent = message;
+      messageDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        z-index: 1000;
+        background: ${type === 'success' ? '#4A9B8E' : type === 'error' ? '#dc3545' : '#17a2b8'};
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      `;
+      
+      document.body.appendChild(messageDiv);
+      
+      setTimeout(() => {
+        if (document.body.contains(messageDiv)) {
+          document.body.removeChild(messageDiv);
+        }
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
