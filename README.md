@@ -1,18 +1,14 @@
 # 🧠⚖️ Club IA Legal - Dashboards Interactivos
 
-<div align="center">
-
 ![Club IA Legal](https://img.shields.io/badge/Club-IA%20Legal-4A9B8E?style=for-the-badge&logo=scales&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-222222?style=for-the-badge&logo=github&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-**Dashboards interactivos para visualizar y seguir los aspectos más importantes de las actividades del Club IA Legal**
+Dashboards interactivos para visualizar y seguir los aspectos más importantes de las actividades del Club IA Legal
 
-[🌐 Ver Demo](https://tu-usuario.github.io/club-ia-legal) • [📖 Documentación](#características) • [🚀 Instalación](#instalación)
-
-</div>
+[🌐 Ver Demo](https://hackbug38.github.io/Dashboards-Conversatorios-Club-IA-Legal/)
 
 ---
 
@@ -29,46 +25,62 @@ Este repositorio contiene **dashboards interactivos** diseñados para documentar
 ## ✨ Características
 
 ### 🎨 Interfaz Moderna y Profesional
+
 - Diseño limpio con paleta de colores corporativa
 - Sistema de tarjetas interactivas con categorías visuales
 - Sidebar dinámico con estadísticas en tiempo real
 - Animaciones suaves y transiciones fluidas
 
 ### 📊 Seguimiento de Progreso
+
 - Barra de progreso visual actualizada automáticamente
 - Contador de puntos completados vs totales
 - Sistema de checkboxes interactivos
 - Funciones rápidas: marcar todos, desmarcar todos, reiniciar
 
 ### 🎯 Vistas Múltiples
+
 - **Vista Detallada**: Contenido completo de cada punto
 - **Vista Compacta**: Resúmenes concisos en formato grid
 - Cambio instantáneo entre vistas sin perder progreso
 
 ### 🏷️ Sistema de Categorías
+
 - Etiquetas de categoría con códigos de color
 - Iconos descriptivos para cada tipo de contenido
 - Lista dinámica de categorías en sidebar
 - Contadores por categoría
 
 ### 📱 Totalmente Responsive
+
 - Adaptable a desktop, tablet y móvil
 - Sidebar se reposiciona automáticamente
 - Grid responsive en vista compacta
 - Optimizado para pantallas pequeñas
+
+### 🎬 Reproductor de Video (Dashboard 3)
+
+- Página dedicada de Resumen Audiovisual
+- Reproductor HTML5 con controles completos
+- Soporte para búsqueda en video (HTTP Range Requests)
+- Audio y video en sincronía
+- Botón de regreso a dashboard
+- Diseño limpio y minimalista
 
 ## 🛠️ Tecnologías Utilizadas
 
 Este proyecto está construido con tecnologías web estándar, sin dependencias externas:
 
 ### Frontend
-```
-📄 HTML5          - Estructura semántica
-🎨 CSS3           - Estilos modernos con CSS Variables, Grid y Flexbox
-⚡ JavaScript     - Interactividad y lógica de negocio (Vanilla JS)
+
+```text
+HTML5          - Estructura semántica
+CSS3           - Estilos modernos con CSS Variables, Grid y Flexbox
+JavaScript     - Interactividad y lógica de negocio (Vanilla JS)
 ```
 
 ### Características Técnicas
+
 - **CSS Variables** para theming consistente
 - **CSS Grid & Flexbox** para layouts responsivos
 - **Event Delegation** para manejo eficiente de eventos
@@ -81,46 +93,47 @@ Este proyecto está construido con tecnologías web estándar, sin dependencias 
 ### Opción 1: GitHub Pages (Recomendado)
 
 1. **Fork este repositorio**
-   ```bash
-   # Haz clic en el botón "Fork" en GitHub
-   ```
+   
+   Haz clic en el botón "Fork" en GitHub
 
 2. **Habilita GitHub Pages**
+   
    - Ve a Settings → Pages
    - En "Source" selecciona la rama `main`
    - Guarda los cambios
 
 3. **Accede a tu dashboard**
-   ```
-   https://tu-usuario.github.io/club-ia-legal
+   
+   ```text
+   https://tu-usuario.github.io/Dashboards-Conversatorios-Club-IA-Legal/
    ```
 
 ### Opción 2: Local
 
 1. **Clona el repositorio**
+
    ```bash
-   git clone https://github.com/tu-usuario/club-ia-legal.git
-   cd club-ia-legal
+   git clone https://github.com/tu-usuario/Dashboards-Conversatorios-Club-IA-Legal.git
+   cd Dashboards-Conversatorios-Club-IA-Legal
    ```
 
 2. **Abre el dashboard**
+
    ```bash
    # Simplemente abre el archivo index.html en tu navegador
    # O usa un servidor local:
    python -m http.server 8000
-   # o con Node.js:
-   npx http-server
    ```
 
 3. **Navega a**
-   ```
+
+   ```text
    http://localhost:8000
    ```
 
 ## 📂 Estructura del Proyecto
 
-```
-dashboards-conversatorios/
+```text
 ├── � index.html                     # Punto de entrada principal
 ├── 📄 home.html                      # Hub de navegación central
 ├── 📄 README.md                      # Este archivo
@@ -162,16 +175,19 @@ dashboards-conversatorios/
 ## 🎯 Casos de Uso
 
 ### Para Asistentes a Eventos
+
 - Revisar los puntos clave discutidos en el conversatorio
 - Marcar temas ya estudiados
 - Hacer seguimiento del progreso de aprendizaje
 
 ### Para Organizadores
+
 - Documentar contenido de eventos de forma estructurada
 - Compartir material de forma profesional
 - Facilitar el acceso a información post-evento
 
 ### Para Investigadores
+
 - Consultar conceptos específicos por categoría
 - Acceder rápidamente a definiciones y metodologías
 - Exportar/compartir contenido relevante
@@ -179,6 +195,7 @@ dashboards-conversatorios/
 ## 🎨 Personalización
 
 ### Cambiar Colores
+
 Edita las variables CSS en el bloque `:root`:
 
 ```css
@@ -219,8 +236,9 @@ Edita las variables CSS en el bloque `:root`:
 
 | Evento | Fecha | Ponente | Dashboard |
 |--------|-------|---------|-----------|
-| Legal Prompting & Hot Takes | 19 Oct 2025 | María Angélica Ramírez | [Ver →](./IA%20&%20Práctica%20Jurídica/index.html) |
-| Gestión de Riesgos en IA | TBD | TBD | [Ver →](./Gestión%20de%20Riesgo/dashboard-ia-legal/index.html) |
+| Gestión de Riesgos en IA | 12 Oct 2025 | Luis Enríquez | [Ver →](./dashboard1/index.html) |
+| Legal Prompting & Hot Takes | 19 Oct 2025 | María Angélica Ramírez | [Ver →](./dashboard2/index.html) |
+| Cerebros Sintéticos, Derechos Reales | 26 Oct 2025 | Daniel Legaspi | [Ver →](./dashboard3/index.html) |
 
 ## 🤝 Contribuciones
 
@@ -238,7 +256,8 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ## 👥 Autores
 
-**Club IA Legal**
+### Club IA Legal
+
 - Website: [Club IA Legal](https://www.linkedin.com/company/club-ia-legal)
 - LinkedIn: [@clubialegal](https://www.linkedin.com/company/club-ia-legal)
 
@@ -248,18 +267,18 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 - A la comunidad de profesionales del derecho interesados en IA
 - A los organizadores y colaboradores del proyecto
 
-
 ## 📞 Contacto
 
 **Club IA Legal** - Comité Laboratorio
 
-- 🌐 Website: https://clubialegal.org/
-- 💼 LinkedIn: https://linkedin.com/company/club-ia-legal
-- 🤖 Nas.io: https://lnkd.in/d7uDCMJM
-- 📧 Email: contacto@clubialegal.com
+- 🌐 Website: [https://clubialegal.org/](https://clubialegal.org/)
+- 💼 LinkedIn: [https://linkedin.com/company/club-ia-legal](https://linkedin.com/company/club-ia-legal)
+- 🤖 Nas.io: [https://lnkd.in/d7uDCMJM](https://lnkd.in/d7uDCMJM)
+- 📧 Email: [contacto@clubialegal.com](mailto:contacto@clubialegal.com)
 
+---
 
-**⭐ Si te resultó útil este proyecto, considera darle una estrella en GitHub ⭐**
+Si te resultó útil este proyecto, considera darle una estrella en GitHub ⭐
 
 Hecho con ❤️ por el Club IA Legal
 
