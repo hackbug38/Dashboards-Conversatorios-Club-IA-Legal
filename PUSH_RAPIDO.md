@@ -20,18 +20,21 @@ git push origin main
 
 ---
 
-## 📖 ¿QUÉ SE ENVÍA?
+## ¿QUÉ SE ENVÍA?
 
 ✅ **Dashboard3 Completo:**
+
 - `dashboard3/index.html` (16 puntos del conversatorio)
 - `dashboard3/mapa_mental.html` (Visualización interactiva D3.js)
 - `dashboard3/club_ia_legal_banner_v3.png` (Logo)
 - `dashboard3/README.md` (Documentación)
 
 ✅ **Página Principal:**
+
 - `home.html` (Navegación a 3 dashboards)
 
 ✅ **Documentación:**
+
 - `CAMBIOS_REALIZADOS.txt`
 - `TAREAS_COMPLETADAS.md`
 - `GITHUB_PUSH_INSTRUCTIONS.md`
