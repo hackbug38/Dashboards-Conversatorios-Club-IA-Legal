@@ -39,15 +39,28 @@
     .header {
       text-align: center;
       margin-bottom: 60px;
-      padding: 40px 20px;
       background: var(--color-surface);
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
     }
 
     .logo {
-      font-size: 48px;
-      margin-bottom: 16px;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .header-content {
+      padding: 40px 20px;
     }
 
     .header h1 {
@@ -207,9 +220,13 @@
   <div class="container">
     <!-- Header -->
     <div class="header">
-      <div class="logo">⚖️🤖</div>
-      <h1>Club IA Legal</h1>
-      <p>Dashboards Interactivos de Conversatorios y Eventos</p>
+      <div class="logo">
+        <img src="dashboard3/club_ia_legal_banner_v3.png" alt="Club IA Legal">
+      </div>
+      <div class="header-content">
+        <h1>Club IA Legal</h1>
+        <p>Dashboards Interactivos de Conversatorios y Eventos</p>
+      </div>
     </div>
 
     <!-- Dashboards Grid -->
