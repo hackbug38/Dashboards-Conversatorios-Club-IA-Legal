@@ -1,11 +1,11 @@
-# 🚀 INSTRUCCIONES PARA GITHUB - CLUB IA LEGAL DASHBOARDS
+# 🚀 INSTRUCCIONES PARA GITHUB
 
 ## ✅ TAREAS COMPLETADAS (4/4)
 
 Se han completado exitosamente las 4 tareas solicitadas:
 
 1. ✅ **README.md para dashboard3** - Documentación completa del conversatorio
-2. ✅ **Actualizar Índice Principal** - home.html con navegación a los 3 dashboards  
+2. ✅ **Actualizar Índice Principal** - home.html con navegación a los 3 dashboards
 3. ✅ **Verificar Enlaces** - Todos los enlaces internos verificados y funcionales
 4. ✅ **Preparar para GitHub** - Documentación y scripts listos
 
@@ -14,12 +14,14 @@ Se han completado exitosamente las 4 tareas solicitadas:
 ## 📁 ARCHIVOS NUEVOS CREADOS
 
 ### Archivos Directos
+
 - `home.html` - Página principal de navegación (10.2 KB)
 - `CAMBIOS_REALIZADOS.txt` - Documentación detallada de cambios
 - `TAREAS_COMPLETADAS.md` - Resumen de tareas completadas
 - `push-to-github.ps1` - Script para facilitar push a GitHub
 
-### En dashboard3/
+### En dashboard3
+
 - `index.html` - Dashboard principal con 16 puntos (43.4 KB)
 - `mapa_mental.html` - Visualización interactiva D3.js (22 KB)
 - `club_ia_legal_banner_v3.png` - Logo/Banner (1.1 MB)
@@ -29,83 +31,52 @@ Se han completado exitosamente las 4 tareas solicitadas:
 
 ## 🔧 OPCIÓN 1: Usar PowerShell Script (Recomendado)
 
-### En Windows PowerShell:
+En Windows PowerShell, ejecuta:
 
 ```powershell
-# Navegar a la carpeta del proyecto
-cd "c:\Users\Lecter\OneDrive\Documents\Lecter\LECTER INC\CLUB IA LEGAL\COMITÉS\Comité Laboratorio\Videos Eventos\Cerebros sintéticos,derechos reales\Dashboard"
-
-# Ejecutar el script
 .\push-to-github.ps1
-
-# El script te guiará interactivamente a través del proceso
 ```
+
+El script te guiará interactivamente a través del proceso.
 
 ---
 
 ## 🔧 OPCIÓN 2: Comandos Manuales de Git
 
-### Si el proyecto ya está en git:
+### Si el proyecto ya está en git
 
 ```powershell
-# 1. Navegar a la carpeta del proyecto
 cd "Dashboard"
-
-# 2. Ver el estado actual
 git status
-
-# 3. Agregar todos los archivos modificados
 git add .
-
-# 4. Crear un commit con un mensaje descriptivo
-git commit -m "Add dashboard3: Cerebros Sintéticos, Derechos Reales + home page navigation
-
-- Nuevo dashboard3 para conversatorio sobre cerebros sintéticos y derechos reales
-- Home.html como página principal de navegación
-- Dashboard3 con 16 puntos clave categorizados
-- README.md completo para dashboard3
-- Mapa mental interactivo incluido
-- Enlaces internos verificados y funcionales"
-
-# 5. Empujar cambios al repositorio remoto
+git commit -m "Add dashboard3: Cerebros Sintéticos, Derechos Reales + home page"
 git push origin main
 ```
 
-### Si NO está en git (Inicializar primero):
+### Si NO está en git
 
 ```powershell
-# 1. Navegar a la carpeta del proyecto
 cd "Dashboard"
-
-# 2. Inicializar repositorio git local
 git init
-
-# 3. Agregar todos los archivos
 git add .
-
-# 4. Crear commit inicial
 git commit -m "Initial commit: Club IA Legal Dashboards with dashboard3"
-
-# 5. Conectar al repositorio remoto de GitHub
 git remote add origin https://github.com/hackbug38/Dashboards-Conversatorios-Club-IA-Legal.git
-
-# 6. Cambiar rama a 'main' si es necesario
 git branch -M main
-
-# 7. Empujar al repositorio remoto
 git push -u origin main
 ```
 
 ---
 
-## 📊 INFORMACIÓN DEL COMMIT SUGERIDO
+## 📊 INFORMACIÓN DEL COMMIT
 
-**Título del Commit:**
+**Título:**
+
 ```
 Add dashboard3: Cerebros Sintéticos, Derechos Reales + home page
 ```
 
-**Descripción del Commit:**
+**Descripción:**
+
 ```
 - Crear dashboard3 para conversatorio "Cerebros Sintéticos, Derechos Reales"
 - Dashboard3 contiene 16 puntos clave categorizados
@@ -124,20 +95,24 @@ Add dashboard3: Cerebros Sintéticos, Derechos Reales + home page
 ## ✨ CARACTERÍSTICAS DE DASHBOARD3
 
 ### 🎯 16 Puntos Clave
+
 Categorizados en 6 secciones:
-- Conceptos Fundamentales (2 puntos)
-- Aspectos Técnicos (3 puntos)
-- Marco Legal (3 puntos)
-- Ética y Sociedad (3 puntos)
-- Derechos Reales (3 puntos)
-- Futuro y Perspectivas (2 puntos)
+
+1. Conceptos Fundamentales (2 puntos)
+2. Aspectos Técnicos (3 puntos)
+3. Marco Legal (3 puntos)
+4. Ética y Sociedad (3 puntos)
+5. Derechos Reales (3 puntos)
+6. Futuro y Perspectivas (2 puntos)
 
 ### 📊 Vistas Disponibles
+
 - 📝 Vista Detallada - Texto completo
 - 📋 Vista Compacta - Resumen ejecutivo
 - 🧠 Mapa Mental - Visualización interactiva
 
 ### 📈 Funcionalidades
+
 - ✅ Seguimiento de progreso en tiempo real
 - 🎨 Diseño responsivo
 - 🔗 Enlaces internos funcionales
@@ -163,19 +138,15 @@ Antes de hacer push, verifica:
 
 ## 🔗 INFORMACIÓN DEL REPOSITORIO
 
-**Repositorio:** hackbug38/Dashboards-Conversatorios-Club-IA-Legal  
-**URL:** https://github.com/hackbug38/Dashboards-Conversatorios-Club-IA-Legal
+**Repositorio:** hackbug38/Dashboards-Conversatorios-Club-IA-Legal
 
 ---
 
 ## ⚙️ CONFIGURACIÓN GIT (SI ES NECESARIO)
 
 ```powershell
-# Configurar usuario de git (primera vez)
 git config --global user.name "Tu Nombre"
 git config --global user.email "tu.email@ejemplo.com"
-
-# Verificar configuración
 git config --list
 ```
 
