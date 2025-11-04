@@ -120,16 +120,43 @@ Este proyecto está construido con tecnologías web estándar, sin dependencias 
 ## 📂 Estructura del Proyecto
 
 ```
-club-ia-legal/
-├── 📁 IA & Práctica Jurídica/
-│   └── index.html                    # Dashboard: Legal Prompting
-├── 📁 Gestión de Riesgo/
-│   └── dashboard-ia-legal/
-│       └── index.html                # Dashboard: Gestión de Riesgos en IA
-├── 📁 assets/
-│   ├── 🖼️ images/                    # Imágenes y logos
-│   └── 📄 documents/                 # Documentos fuente (.txt, .docx)
-└── 📄 README.md                      # Este archivo
+dashboards-conversatorios/
+├── � index.html                     # Punto de entrada principal
+├── 📄 home.html                      # Hub de navegación central
+├── 📄 README.md                      # Este archivo
+├── 📄 .gitignore                     # Configuración git
+│
+├── 📁 dashboard1/                    # Dashboard: Gestión de Riesgos
+│   ├── index.html
+│   ├── mapa_mental.html
+│   ├── club_ia_legal_banner_v3.png
+│   └── README.md
+│
+├── 📁 dashboard2/                    # Dashboard: Legal Prompting
+│   ├── index.html
+│   ├── mapa_mental.html
+│   ├── club_ia_legal_banner_v3.png
+│   └── README.md
+│
+├── 📁 dashboard3/                    # Dashboard: Cerebros Sintéticos ⭐ NUEVO
+│   ├── index.html                    # 16 puntos conversatorios
+│   ├── mapa_mental.html              # Visualización D3.js interactiva
+│   ├── club_ia_legal_banner_v3.png
+│   └── README.md
+│
+├── � docs/                          # Documentación del proyecto
+│   ├── CAMBIOS_REALIZADOS.txt
+│   ├── CHECKLIST_FINAL.txt
+│   ├── GITHUB_PUSH_INSTRUCTIONS.md
+│   ├── PUSH_RAPIDO.md
+│   └── TAREAS_COMPLETADAS.md
+│
+├── 📁 contenido/                     # Archivos de contenido
+│   ├── Cerebros_Digitales_Hot_Takes.txt
+│   └── Cerebros_Digitales_Hot_Takes.docx
+│
+└── 📁 media/                         # Archivos multimedia
+    └── (videos, audio, etc.)
 ```
 
 ## 🎯 Casos de Uso
