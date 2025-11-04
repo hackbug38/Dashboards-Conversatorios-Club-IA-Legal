@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerebros Sintéticos, Derechos Reales (IA y Derecho)</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #FFFFFF;
+            overflow: hidden;
+            color: #2C3E50;
+        }
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        #mindmap {
+            width: 100%;
+            height: 100%;
+            cursor: grab;
+        }
+
+        #mindmap:active {
+            cursor: grabbing;
+        }
+
+        .node rect {
+            stroke-width: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            rx: 6;
+            ry: 6;
+        }
+
+        .node.level-0 rect {
+            fill: #4A9B8E;
+            stroke: #3e8277;
+        }
+
+        .node.level-1 rect {
+            fill: #6C757D;
+            stroke: #5a6268;
+        }
+
+        .node.level-2 rect {
+            fill: #17A2B8;
+            stroke: #138496;
+        }
+
+        .node.level-3 rect {
+            fill: #20C997;
+            stroke: #1aa179;
+        }
+
+        .node.collapsed rect {
+            fill: #4A9B8E !important;
+            stroke: #3e8277 !important;
+        }
+
+        .node rect:hover {
+            filter: brightness(1.3);
+            stroke-width: 3px;
+        }
+
+        .node text {
+            font-size: 13px;
+            font-weight: 500;
+            fill: #FFFFFF;
+            pointer-events: none;
+            text-anchor: middle;
+        }
+
+        .node.level-0 text {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .node.level-1 text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .link {
+            fill: none;
+            stroke: #6C757D;
+            stroke-width: 2px;
+            stroke-opacity: 0.3;
+        }
+
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #FFFFFF;
+            border: 1px solid #E9ECEF;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            z-index: 1000;
+        }
+
+        .controls h3 {
+            margin-bottom: 15px;
+            color: #4A9B8E;
+            font-size: 16px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .controls button {
+            display: block;
+            width: 100%;
+            margin: 8px 0;
+            padding: 12px;
+            background: #4A9B8E;
+            color: white;
+            border: 1px solid #4A9B8E;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .controls button:hover {
+            background: #3e8277;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .controls button#btnBack {
+            background: #DC3545;
+            border-color: #DC3545;
+            margin-top: 16px;
+            border-top: 1px solid #E9ECEF;
+            padding-top: 16px;
+        }
+
+        .controls button#btnBack:hover {
+            background: #C82333;
+        }
+
+        .info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #FFFFFF;
+            border: 1px solid #E9ECEF;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            max-width: 450px;
+        }
+
+        .info h1 {
+            margin-bottom: 10px;
+            color: #4A9B8E;
+            font-size: 22px;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .info p {
+            font-size: 13px;
+            color: #6C757D;
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: #FFFFFF;
+            border: 1px solid #E9ECEF;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            font-size: 12px;
+        }
+
+        .legend h3 {
+            margin-bottom: 10px;
+            color: #4A9B8E;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            color: #2C3E50;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid rgba(0,0,0,0.1);
+        }
+
+        .legend p {
+            margin: 5px 0;
+            color: #6C757D;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: #2C3E50;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 2000;
+            border: 1px solid #4A9B8E;
+            max-width: 350px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tooltip strong {
+            color: #4A9B8E;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <svg id="mindmap"></svg>
+        
+        <div class="info">
+            <h1>Cerebros Sintéticos, Derechos Reales (IA y Derecho)</h1>
+            <p style="color: #a0aec0; font-style: italic;">Mapa mental interactivo</p>
+        </div>
+
+        <div class="controls">
+            <h3>⚙️ Controles</h3>
+            <button id="btnExpandAll">📂 Expandir Todo</button>
+            <button id="btnCollapseAll">📁 Colapsar Todo</button>
+            <button id="btnResetZoom">🔄 Resetear Vista</button>
+            <button id="btnCenter">🎯 Centrar</button>
+            <button id="btnBack">← Volver al Inicio</button>
+        </div>
+
+        <div class="legend">
+            <h3>📍 Leyenda</h3>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4A9B8E; border-color: #3e8277;"></div>
+                <span>Tema Central</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #6C757D; border-color: #5a6268;"></div>
+                <span>Categorías Principales</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #17A2B8; border-color: #138496;"></div>
+                <span>Subcategorías</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #20C997; border-color: #1aa179;"></div>
+                <span>Detalles</span>
+            </div>
+            <p style="margin-top: 12px;">🖱️ Click: Expandir/Colapsar</p>
+            <p>🔍 Scroll: Zoom in/out</p>
+            <p>✋ Arrastrar: Mover vista</p>
+        </div>
+
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <script>
+        // DATOS COMPLETOS DEL MAPA MENTAL
+        const mindMapData = {
+            name: "Cerebros Sintéticos, Derechos Reales (IA y Derecho)",
+            level: 0,
+            children: [
+                {
+                    name: "Desafío Jurídico Central",
+                    level: 1,
+                    children: [
+                        {
+                            name: "¿Puede un sistema de IA ser titular de derechos?",
+                            level: 2,
+                            children: []
+                        },
+                        {
+                            name: "Marcos legales tradicionales vs. Automatización creativa",
+                            level: 2,
+                            children: []
+                        },
+                        {
+                            name: "Reinterpretación de normas de propiedad intelectual",
+                            level: 2,
+                            children: []
+                        }
+                    ]
+                },
+                {
+                    name: "Perspectivas a Explorar",
+                    level: 1,
+                    children: [
+                        {
+                            name: "Propiedad Intelectual",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Autor",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Inventor",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Derechos de autor",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "IA generativa",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Responsabilidad Legal",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Trazabilidad de la creación automatizada",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Gobernanza de la IA",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Rol del Chief AI Officer (CAIO)",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "Conceptos Clave de IA",
+                    level: 1,
+                    children: [
+                        {
+                            name: "Cerebros sintéticos",
+                            level: 2,
+                            children: []
+                        },
+                        {
+                            name: "Machine learning (Aprendizaje automático)",
+                            level: 2,
+                            children: []
+                        },
+                        {
+                            name: "Creación automatizada",
+                            level: 2,
+                            children: []
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Variables globales
+        let root, g, svg, zoom, tree, tooltip;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        // Función para calcular el ancho del texto
+        function getTextWidth(text, fontSize = 13) {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            context.font = `${fontSize}px "Segoe UI", sans-serif`;
+            return context.measureText(text).width;
+        }
+
+        // Inicializar
+        function init() {
+            // Crear SVG
+            svg = d3.select("#mindmap")
+                .attr("width", width)
+                .attr("height", height);
+
+            g = svg.append("g");
+
+            // Tooltip
+            tooltip = d3.select("#tooltip");
+
+            // Crear layout de árbol horizontal
+            tree = d3.tree()
+                .nodeSize([50, 300])
+                .separation((a, b) => 1);
+
+            // Crear jerarquía
+            root = d3.hierarchy(mindMapData);
+            root.x0 = height / 2;
+            root.y0 = 0;
+
+            // Asignar IDs únicos
+            let nodeId = 0;
+            root.descendants().forEach(d => {
+                d.id = nodeId++;
+            });
+
+            // Expandir todo por defecto
+            root.descendants().forEach(d => {
+                if (d._children) {
+                    d.children = d._children;
+                    d._children = null;
+                }
+            });
+
+            // Colapsar todos los nodos excepto la raíz
+            root.descendants().forEach(d => {
+                if (d.children && d.depth > 0) {
+                    d._children = d.children;
+                    d.children = null;
+                }
+            });
+
+            // Zoom behavior
+            zoom = d3.zoom()
+                .scaleExtent([0.1, 3])
+                .on("zoom", (event) => {
+                    g.attr("transform", event.transform);
+                });
+
+            svg.call(zoom);
+
+            // Event listeners para botones
+            document.getElementById('btnExpandAll').addEventListener('click', expandAll);
+            document.getElementById('btnCollapseAll').addEventListener('click', collapseAll);
+            document.getElementById('btnResetZoom').addEventListener('click', resetZoom);
+            document.getElementById('btnCenter').addEventListener('click', centerView);
+            document.getElementById('btnBack').addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+
+            // Renderizar
+            update(root);
+            
+            // Centrar vista inicial después de que se renderice el árbol
+            setTimeout(centerView, 400);
+        }
+
+        // Función para colapsar nodos
+        function collapse(d) {
+            if (d.children) {
+                d._children = d.children;
+                d._children.forEach(collapse);
+                d.children = null;
+            }
+        }
+
+        // Actualizar el árbol
+        function update(source) {
+            const duration = 750;
+
+            // Calcular nuevo layout
+            const treeData = tree(root);
+            const nodes = treeData.descendants();
+            const links = treeData.links();
+
+            // Actualizar nodos
+            const node = g.selectAll("g.node")
+                .data(nodes, d => d.id);
+
+            // Enter new nodes
+            const nodeEnter = node.enter().append("g")
+                .attr("class", d => {
+                    let classes = "node level-" + d.data.level;
+                    if (d._children) classes += " collapsed";
+                    return classes;
+                })
+                .attr("transform", d => `translate(${source.y0},${source.x0})`)
+                .on("click", (event, d) => click(event, d))
+                .on("mouseover", function(event, d) {
+                    d3.select(this).select("rect")
+                        .transition()
+                        .duration(200)
+                        .style("filter", "brightness(1.4)");
+                    
+                    tooltip
+                        .style("opacity", 1)
+                        .html(`<strong>${d.data.name}</strong><br><em>${d.children ? 'Click para colapsar' : d._children ? 'Click para expandir' : 'Nodo final'}</em>`)
+                        .style("left", (event.pageX + 15) + "px")
+                        .style("top", (event.pageY - 40) + "px");
+                })
+                .on("mouseout", function(event, d) {
+                    d3.select(this).select("rect")
+                        .transition()
+                        .duration(200)
+                        .style("filter", "brightness(1)");
+                    
+                    tooltip.style("opacity", 0);
+                });
+
+            // Añadir rectángulos
+            nodeEnter.each(function(d) {
+                const fontSize = d.data.level === 0 ? 16 : d.data.level === 1 ? 14 : 13;
+                const textWidth = getTextWidth(d.data.name, fontSize);
+                const padding = 20;
+                const rectWidth = textWidth + padding;
+                const rectHeight = 30;
+
+                d3.select(this).append("rect")
+                    .attr("width", rectWidth)
+                    .attr("height", rectHeight)
+                    .attr("x", -rectWidth / 2)
+                    .attr("y", -rectHeight / 2);
+
+                d3.select(this).append("text")
+                    .attr("dy", "0.35em")
+                    .text(d.data.name)
+                    .style("fill-opacity", 0);
+            });
+
+            // Transición de nodos
+            const nodeUpdate = nodeEnter.merge(node);
+
+            nodeUpdate.transition()
+                .duration(duration)
+                .attr("transform", d => `translate(${d.y},${d.x})`)
+                .attr("class", d => {
+                    let classes = "node level-" + d.data.level;
+                    if (d._children) classes += " collapsed";
+                    return classes;
+                });
+
+            nodeUpdate.select("text")
+                .transition()
+                .duration(duration)
+                .style("fill-opacity", 1);
+
+            // Exit nodes
+            const nodeExit = node.exit().transition()
+                .duration(duration)
+                .attr("transform", d => `translate(${source.y},${source.x})`)
+                .remove();
+
+            nodeExit.select("rect")
+                .attr("width", 0)
+                .attr("height", 0);
+
+            nodeExit.select("text")
+                .style("fill-opacity", 0);
+
+            // Actualizar links
+            const link = g.selectAll("path.link")
+                .data(links, d => d.target.id);
+
+            // Enter new links
+            const linkEnter = link.enter().insert("path", "g")
+                .attr("class", "link")
+                .attr("d", d => {
+                    const o = {x: source.x0, y: source.y0};
+                    return diagonal(o, o);
+                });
+
+            // Transición de links
+            linkEnter.merge(link).transition()
+                .duration(duration)
+                .attr("d", d => diagonal(d.source, d.target));
+
+            // Exit links
+            link.exit().transition()
+                .duration(duration)
+                .attr("d", d => {
+                    const o = {x: source.x, y: source.y};
+                    return diagonal(o, o);
+                })
+                .remove();
+
+            // Guardar posición antigua
+            nodes.forEach(d => {
+                d.x0 = d.x;
+                d.y0 = d.y;
+            });
+        }
+
+        // Función para crear curvas suaves
+        function diagonal(s, d) {
+            return `M ${s.y} ${s.x}
+                    C ${(s.y + d.y) / 2} ${s.x},
+                      ${(s.y + d.y) / 2} ${d.x},
+                      ${d.y} ${d.x}`;
+        }
+
+        // Click en nodo
+        function click(event, d) {
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else if (d._children) {
+                d.children = d._children;
+                d._children = null;
+            }
+            update(d);
+        }
+
+        // Funciones de control
+        function expandAll() {
+            root.descendants().forEach(d => {
+                if (d._children) {
+                    d.children = d._children;
+                    d._children = null;
+                }
+            });
+            update(root);
+        }
+
+        function collapseAll() {
+            root.descendants().forEach(d => {
+                if (d.children && d.depth > 0) {
+                    d._children = d.children;
+                    d.children = null;
+                }
+            });
+            update(root);
+        }
+
+        function resetZoom() {
+            centerView();
+        }
+
+        function centerView() {
+            // Centrar el nodo raíz pero desplazado a la izquierda para no bloquear el panel de controles
+            const scale = 1;
+            const offsetX = -300; // Desplazamiento hacia la izquierda
+            const translate = [
+                width / 3 - root.y * scale + offsetX,
+                height / 2 - root.x * scale
+            ];
+
+            svg.transition()
+                .duration(750)
+                .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
+        }
+
+        // Iniciar cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>
