@@ -1,0 +1,24 @@
+name: "LFS Pages Guard"
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  lfs-pages-check:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git LFS
+        run: |
+          git lfs install --local
+
+      - name: Run LFS -> Pages detection script
+        shell: pwsh
+        run: |
+          Write-Host "Running find-lfs-in-pages.ps1"
+          .\scripts\find-lfs-in-pages.ps1
