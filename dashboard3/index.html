@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Club IA Legal - Cerebros sintéticos Derechos Reales</title>
+  <title>Club IA Legal - Cerebros sintéticos, derechos reales</title>
   <style>
     :root {
       /* Professional Color Tokens */
@@ -668,10 +668,10 @@
       </div>
 
       <div class="view-controls">
-        <button class="btn active" id="detailedView">📝 Vista Detallada</button>
-        <button class="btn" id="compactView">📋 Vista Compacta</button>
-        <button class="btn" id="mentalMapBtn">🧠 Mapa Mental</button>
-        <button class="btn" id="audiovisualBtn">🎬 Resumen Audiovisual</button>
+  <button class="btn active" id="detailedView">📝 Vista Detallada</button>
+  <button class="btn" id="compactView">📋 Vista Compacta</button>
+  <button class="btn" id="mentalMapBtn">🧠 Mapa Mental</button>
+  <button class="btn" id="audiovisualBtn">🎬 Resumen Audiovisual</button>
       </div>
     </div>
 
@@ -901,7 +901,11 @@
                 <div class="point-number">14</div>
               </div>
               <div class="point-content">
+<<<<<<< HEAD
                 <div class="point-text">Sálvese quien pueda (Andrés Oppenheimer, 2017): todo en Japón está robotizado. ¿Quién me responde por la calidad del producto o servicio? ¿El Robot? O busco a alguien de atención al cliente. Al final siempre buscamos llegar al componente humano.</div>
+=======
+                <div class="point-text">Sálvese quien pueda (Andrés Oppenheimer, 2017): todo en Japón está robotizado. ¿Quién me responde por la calidad del producto o servicio? ¿El Robot? O busco a alguien de atención al cliente. Al final siempre buscamos llegar al componente humano.</div>
+>>>>>>> origin/main
                 <div class="point-read-checkbox"></div>
               </div>
             </div>
@@ -1030,15 +1034,12 @@
       });
 
       // Mental Map Button - Navigate to mental map page
-      document.getElementById('mentalMapBtn').addEventListener('click', function() {
-        window.location.href = 'mapa_mental.html';
-      });
+      const mentalBtn = document.getElementById('mentalMapBtn');
+      if (mentalBtn) mentalBtn.addEventListener('click', function() { window.location.href = 'mapa_mental.html'; });
 
       // Audiovisual Button - Navigate to audiovisual page
-      document.getElementById('audiovisualBtn').addEventListener('click', function() {
-        window.location.href = 'resumen_audiovisual.html';
-      });
-
+      const avBtn = document.getElementById('audiovisualBtn');
+      if (avBtn) avBtn.addEventListener('click', function() { window.location.href = 'resumen_audiovisual.html'; });
       // no-op: delegated listeners handle checkbox clicks
 
       console.log('🔧 Event listeners configurados para', document.querySelectorAll('.point-read-checkbox').length, 'checkboxes');
@@ -1295,4 +1296,8 @@
     }
   </script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> origin/main

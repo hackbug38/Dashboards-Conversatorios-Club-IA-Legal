@@ -77,7 +77,7 @@ Este proyecto está construido con tecnologías web estándar, sin dependencias 
 HTML5          - Estructura semántica
 CSS3           - Estilos modernos con CSS Variables, Grid y Flexbox
 JavaScript     - Interactividad y lógica de negocio (Vanilla JS)
-```
+```text
 
 ### Características Técnicas
 
@@ -133,43 +133,42 @@ JavaScript     - Interactividad y lógica de negocio (Vanilla JS)
 
 ## 📂 Estructura del Proyecto
 
-```text
-├── � index.html                     # Punto de entrada principal
-├── 📄 home.html                      # Hub de navegación central
-├── 📄 README.md                      # Este archivo
-├── 📄 .gitignore                     # Configuración git
-│
-├── 📁 dashboard1/                    # Dashboard: Gestión de Riesgos
-│   ├── index.html
-│   ├── mapa_mental.html
-│   ├── club_ia_legal_banner_v3.png
-│   └── README.md
-│
-├── 📁 dashboard2/                    # Dashboard: Legal Prompting
-│   ├── index.html
-│   ├── mapa_mental.html
-│   ├── club_ia_legal_banner_v3.png
-│   └── README.md
-│
-├── 📁 dashboard3/                    # Dashboard: Cerebros Sintéticos ⭐ NUEVO
-│   ├── index.html                    # 16 puntos conversatorios
-│   ├── mapa_mental.html              # Visualización D3.js interactiva
-│   ├── club_ia_legal_banner_v3.png
-│   └── README.md
-│
-├── � docs/                          # Documentación del proyecto
-│   ├── CAMBIOS_REALIZADOS.txt
-│   ├── CHECKLIST_FINAL.txt
-│   ├── GITHUB_PUSH_INSTRUCTIONS.md
-│   ├── PUSH_RAPIDO.md
-│   └── TAREAS_COMPLETADAS.md
-│
-├── 📁 contenido/                     # Archivos de contenido
-│   ├── Cerebros_Digitales_Hot_Takes.txt
-│   └── Cerebros_Digitales_Hot_Takes.docx
-│
-└── 📁 media/                         # Archivos multimedia
-    └── (videos, audio, etc.)
+```
+index.html                     # Punto de entrada principal
+home.html                      # Hub de navegación central
+README.md                      # Este archivo
+.gitignore                     # Configuración git
+
+dashboard1/                    # Dashboard: Gestión de Riesgos
+   ├── index.html
+   ├── mapa_mental.html
+   ├── club_ia_legal_banner_v3.png
+   └── README.md
+
+dashboard2/                    # Dashboard: Legal Prompting
+   ├── index.html
+   ├── mapa_mental.html
+   ├── club_ia_legal_banner_v3.png
+   └── README.md
+
+dashboard3/                    # Dashboard: Cerebros Sintéticos (nuevo)
+   ├── index.html                # 16 puntos conversatorios
+   ├── mapa_mental.html          # Visualización interactiva
+   ├── club_ia_legal_banner_v3.png
+   └── README.md
+
+docs/                          # Documentación del proyecto
+   ├── CAMBIOS_REALIZADOS.txt
+   ├── CHECKLIST_FINAL.txt
+   ├── GITHUB_PUSH_INSTRUCTIONS.md
+   ├── PUSH_RAPIDO.md
+   └── TAREAS_COMPLETADAS.md
+
+contenido/                     # Archivos de contenido
+   ├── Cerebros_Digitales_Hot_Takes.txt
+   └── Cerebros_Digitales_Hot_Takes.docx
+
+media/                         # Archivos multimedia (videos, audio, etc.)
 ```
 
 ## 🎯 Casos de Uso
@@ -281,5 +280,3 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 Si te resultó útil este proyecto, considera darle una estrella en GitHub ⭐
 
 Hecho con ❤️ por el Club IA Legal
-
-</div>
