@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen Audiovisual - Club IA Legal</title>
+  <style>
+    :root {
+      --color-primary: #4A9B8E;
+      --color-primary-hover: #3e8277;
+      --color-text: #2C3E50;
+      --color-text-secondary: #6C757D;
+      --color-background: #FFFCF9;
+      --color-border: #E9ECEF;
+      --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --space-16: 16px;
+      --space-20: 20px;
+      --space-24: 24px;
+      --radius-lg: 12px;
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+      background: var(--color-background);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-20);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-24);
+      gap: var(--space-20);
+    }
+
+    .back-button {
+      padding: var(--space-16) var(--space-20);
+      background: var(--color-primary);
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .back-button:hover {
+      background: var(--color-primary-hover);
+      transform: translateX(-2px);
+    }
+
+    /* Video Container */
+    .video-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-24);
+      box-shadow: var(--shadow-md);
+    }
+
+    .video-wrapper {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16 / 9;
+      background: #000000;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      outline: none;
+    }
+    
+    /* Estilos personalizados para el slider */
+    video::-webkit-media-controls-timeline {
+      cursor: pointer;
+    }
+    
+    video::-moz-range-track {
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: var(--space-16);
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .back-button {
+        justify-content: center;
+      }
+
+      .video-container {
+        padding: var(--space-16);
+      }
+
+      .video-wrapper {
+        aspect-ratio: 16 / 9;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header with Back Button -->
+    <div class="header">
+      <h1 style="margin: 0; font-size: 24px; color: var(--color-primary);">🎬 Resumen Audiovisual</h1>
+      <a href="index.html" class="back-button">← Volver al Inicio</a>
+    </div>
+
+    <!-- Video Player -->
+    <div class="video-container">
+      <div class="video-wrapper">
+        <video 
+          id="videoPlayer"
+          controls
+          controlsList="nodownload"
+          crossorigin="anonymous"
+          preload="metadata"
+        >
+          <source src="../Dashboard final.mp4" type="video/mp4">
+          Tu navegador no soporta la etiqueta de video. Por favor, actualiza tu navegador.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    console.log('✅ Resumen Audiovisual cargado');
+    
+    const video = document.getElementById('videoPlayer');
+    
+    // Diagnosticar información del video
+    video.addEventListener('loadedmetadata', function() {
+      console.log('📹 Video metadata cargado');
+      console.log('Duración:', this.duration, 'segundos');
+      console.log('Ancho:', this.videoWidth, 'Altura:', this.videoHeight);
+      console.log('Volumen:', this.volume);
+      console.log('Muted:', this.muted);
+      console.log('Controles habilitados:', this.controls);
+      console.log('Can seek:', this.seekable.length > 0);
+    });
+    
+    video.addEventListener('loadeddata', function() {
+      console.log('✅ Datos del video listos para reproducir');
+    });
+    
+    video.addEventListener('canplay', function() {
+      console.log('✅ Video puede reproducirse');
+    });
+    
+    video.addEventListener('seeking', function() {
+      console.log('🔍 Buscando en video...');
+    });
+    
+    video.addEventListener('seeked', function() {
+      console.log('✅ Búsqueda completada. Tiempo:', this.currentTime);
+    });
+    
+    // Diagnosticar errores
+    video.addEventListener('error', function() {
+      if (this.error) {
+        console.error('❌ Error al cargar el video:', this.error.message);
+        switch(this.error.code) {
+          case 1: console.error('MEDIA_ERR_ABORTED'); break;
+          case 2: console.error('MEDIA_ERR_NETWORK'); break;
+          case 3: console.error('MEDIA_ERR_DECODE'); break;
+          case 4: console.error('MEDIA_ERR_SRC_NOT_SUPPORTED'); break;
+        }
+      }
+    });
+    
+    // Cuando se inicia la reproducción
+    video.addEventListener('play', function() {
+      console.log('▶️ Video en reproducción');
+      console.log('Volumen actual:', this.volume);
+      console.log('Duración total:', this.duration);
+      console.log('Tiempo actual:', this.currentTime);
+    });
+    
+    // Permitir búsqueda manual
+    video.addEventListener('timeupdate', function() {
+      // Mostrar tiempo cada 5 segundos aproximadamente
+      if (Math.floor(this.currentTime) % 5 === 0 && this.currentTime > 0) {
+        // Actualizar silenciosamente
+      }
+    });
+    
+    // Permitir que el usuario busque
+    video.addEventListener('click', function() {
+      if (this.paused) {
+        this.play();
+      } else {
+        this.pause();
+      }
+    });
+    
+    console.log('🎮 Controles de video configurados');
+  </script>
+</body>
+</html>
