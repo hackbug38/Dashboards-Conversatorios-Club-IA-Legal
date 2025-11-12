@@ -134,10 +134,17 @@ JavaScript     - Interactividad y lógica de negocio (Vanilla JS)
 ## 📂 Estructura del Proyecto
 
 ```text
-├── � index.html                     # Punto de entrada principal
+├── 📄 index.html                     # Punto de entrada principal
 ├── 📄 home.html                      # Hub de navegación central
 ├── 📄 README.md                      # Este archivo
 ├── 📄 .gitignore                     # Configuración git
+├── 📄 .gitattributes                 # Configuración Git LFS
+├── 📄 CONTRIBUTING.md                # Guía de contribución
+│
+├── 📁 .github/                       # Configuración GitHub
+│   ├── BRANCH_POLICY.md              # Política de gestión de ramas
+│   ├── PULL_REQUEST_TEMPLATE.md      # Template para PRs
+│   └── workflows/                    # GitHub Actions
 │
 ├── 📁 dashboard1/                    # Dashboard: Gestión de Riesgos
 │   ├── index.html
@@ -149,6 +156,38 @@ JavaScript     - Interactividad y lógica de negocio (Vanilla JS)
 │   ├── index.html
 │   ├── mapa_mental.html
 │   ├── club_ia_legal_banner_v3.png
+│   └── README.md
+│
+├── 📁 dashboard3/                    # Dashboard: Cerebros Sintéticos ⭐
+│   ├── index.html                    # 16 puntos conversatorios
+│   ├── mapa_mental.html              # Visualización D3.js interactiva
+│   ├── resumen_audiovisual.html      # Página de video
+│   ├── club_ia_legal_banner_v3.png
+│   └── README.md
+│
+├── 📁 dashboard4/                    # Dashboard: (Próximo evento)
+│   ├── index.html
+│   ├── mapa_mental.html
+│   ├── club_ia_legal_banner_v3.png
+│   └── README.md
+│
+├── 📁 docs/                          # Documentación del proyecto
+│   ├── BRANCH_ANALYSIS.md            # Análisis de ramas
+│   ├── CAMBIOS_REALIZADOS.txt
+│   ├── CHECKLIST_FINAL.txt
+│   ├── GITHUB_PUSH_INSTRUCTIONS.md
+│   ├── PUSH_RAPIDO.md
+│   └── TAREAS_COMPLETADAS.md
+│
+├── 📁 contenido/                     # Archivos de contenido
+│   └── Cerebros_Digitales_Hot_Takes.txt
+│
+├── 📁 media/                         # Archivos multimedia
+│   └── (videos, imágenes, audio)
+│
+└── 📁 scripts/                       # Scripts de utilidad
+    └── find-lfs-in-pages.ps1         # Verificación LFS Pages
+```
 │   └── README.md
 │
 ├── 📁 dashboard3/                    # Dashboard: Cerebros Sintéticos ⭐ NUEVO
@@ -244,11 +283,73 @@ Edita las variables CSS en el bloque `:root`:
 
 ¡Las contribuciones son bienvenidas! Si deseas agregar nuevos dashboards o mejorar los existentes:
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/nuevo-dashboard`)
-3. Commit tus cambios (`git commit -m 'Agregar dashboard de [Tema]'`)
-4. Push a la rama (`git push origin feature/nuevo-dashboard`)
-5. Abre un Pull Request
+### Flujo de Trabajo
+
+1. **Fork el proyecto** en GitHub
+2. **Clona tu fork** localmente
+
+   ```bash
+   git clone https://github.com/tu-usuario/Dashboards-Conversatorios-Club-IA-Legal.git
+   cd Dashboards-Conversatorios-Club-IA-Legal
+   ```
+
+3. **Crea una rama** siguiendo la convención de nomenclatura
+
+   ```bash
+   git checkout -b feature/nuevo-dashboard-tema
+   # o
+   git checkout -b fix/correccion-bug
+   # o
+   git checkout -b docs/actualizar-documentacion
+   ```
+
+4. **Realiza tus cambios** y commitea con mensajes descriptivos
+
+   ```bash
+   git add .
+   git commit -m "feat: agregar dashboard para evento X"
+   ```
+
+5. **Push a tu fork**
+
+   ```bash
+   git push origin feature/nuevo-dashboard-tema
+   ```
+
+6. **Abre un Pull Request** en GitHub
+
+### Convención de Nomenclatura de Ramas
+
+Consulta [`.github/BRANCH_POLICY.md`](./.github/BRANCH_POLICY.md) para detalles completos sobre:
+
+- Prefijos de ramas (`feature/`, `fix/`, `chore/`, `docs/`)
+- Ciclo de vida de ramas
+- Política de limpieza
+- Resolución de problemas comunes
+
+### Guía de Contribución
+
+Lee [`CONTRIBUTING.md`](./CONTRIBUTING.md) para información detallada sobre:
+
+- Cómo configurar tu entorno de desarrollo
+- Estándares de código
+- Proceso de revisión de PRs
+- Manejo de Git LFS para archivos multimedia
+
+## 🔧 Gestión del Repositorio
+
+### Git LFS (Large File Storage)
+
+Este proyecto utiliza Git LFS para gestionar archivos grandes (videos, imágenes de alta resolución). Sin embargo, los archivos servidos por GitHub Pages **NO deben estar en LFS**.
+
+**Archivos en LFS:** Videos en `/media/`  
+**Archivos normales:** Imágenes PNG de banners en dashboards
+
+Para más detalles, consulta [`docs/BRANCH_ANALYSIS.md`](./docs/BRANCH_ANALYSIS.md).
+
+### Scripts de Utilidad
+
+- **`scripts/find-lfs-in-pages.ps1`**: Verifica que no haya punteros LFS en archivos servidos por Pages
 
 ## 📝 Licencia
 
