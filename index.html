@@ -1,258 +1,513 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-  <title>Club IA Legal - Prompt y acción</title>
-  <style>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club IA Legal - Cerebros sintéticos, derechos reales</title>
-    <style>
-      :root {
-        /* Design tokens */
-        --color-primary: #4A9B8E;
-        --color-primary-hover: #3e8277;
-        --color-text: #2C3E50;
-        --color-text-secondary: #6C757D;
+<!DOCTYPE html><!DOCTYPE html>
+
+<html lang="es"><html lang="es">
+
+<head><head>
+
+  <meta charset="UTF-8">  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Club IA Legal - Dashboards Interactivos</title><<<<<<< HEAD
+
+  <style>  <title>Club IA Legal - Prompt y acción</title>
+
+    :root {  <style>
+
+      --color-primary: #4A9B8E;    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      --color-primary-hover: #3e8277;    <title>Club IA Legal - Cerebros sintéticos, derechos reales</title>
+
+      --color-text: #2C3E50;    <style>
+
+      --color-text-secondary: #6C757D;      :root {
+
+      --color-background: #F8F9FA;        /* Design tokens */
+
+      --color-surface: #FFFFFF;        --color-primary: #4A9B8E;
+
+      --color-border: #E9ECEF;        --color-primary-hover: #3e8277;
+
+      --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;        --color-text: #2C3E50;
+
+    }        --color-text-secondary: #6C757D;
+
         --color-background: #FFFFFF;
-        --color-surface: #FFFFFF;
+
+    * { box-sizing: border-box; }        --color-surface: #FFFFFF;
+
         --color-border: #E9ECEF;
-        --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        --space-8: 8px;
-        --space-12: 12px;
-        --space-16: 16px;
-        --space-20: 20px;
-        --space-24: 24px;
-        --radius-base: 8px;
-        --radius-lg: 12px;
+
+    body {        --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      margin: 0;        --space-8: 8px;
+
+      padding: 0;        --space-12: 12px;
+
+      font-family: var(--font-family-base);        --space-16: 16px;
+
+      background: var(--color-background);        --space-20: 20px;
+
+      color: var(--color-text);        --space-24: 24px;
+
+      line-height: 1.6;        --radius-base: 8px;
+
+    }        --radius-lg: 12px;
+
       }
 
-      * { box-sizing: border-box; }
+    .container {
 
-      body {
-        margin: 0;
+      max-width: 1200px;      * { box-sizing: border-box; }
+
+      margin: 0 auto;
+
+      padding: 40px 20px;      body {
+
+    }        margin: 0;
+
         padding: 0;
-        font-family: var(--font-family-base);
-        background: var(--color-background);
-        color: var(--color-text);
-        line-height: 1.5;
+
+    .header {        font-family: var(--font-family-base);
+
+      background: var(--color-surface);        background: var(--color-background);
+
+      border: 1px solid var(--color-border);        color: var(--color-text);
+
+      border-radius: 16px;        line-height: 1.5;
+
+      padding: 0;      }
+
+      margin-bottom: 40px;
+
+      text-align: center;      .container {
+
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);        max-width: 1200px;
+
+      overflow: hidden;        margin: 0 auto;
+
+    }        padding: 20px;
+
       }
 
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-      }
+    .logo img {
 
-      /* Header */
-      .header {
-        background: #FFFFFF;
-        border: 1px solid var(--color-border);
+      width: 100%;      /* Header */
+
+      height: auto;      .header {
+
+      display: block;        background: #FFFFFF;
+
+    }        border: 1px solid var(--color-border);
+
         border-radius: var(--radius-lg);
-        padding: 0;
-        margin-bottom: 24px;
-        text-align: center;
+
+    .header-content {        padding: 0;
+
+      padding: 32px 24px;        margin-bottom: 24px;
+
+    }        text-align: center;
+
         box-shadow: 0 4px 6px rgba(0,0,0,0.04);
-        overflow: hidden;
-      }
 
-      .logo img { width: 100%; height: auto; display:block; object-fit:contain; }
+    .header h1 {        overflow: hidden;
 
-      .header-content { padding: 24px; }
+      font-size: 36px;      }
 
-      .event-title { font-size: 28px; font-weight:700; margin:0 0 8px 0; }
-      .event-subtitle { font-size:18px; margin:0 0 12px 0; color:var(--color-text-secondary); }
+      font-weight: 700;
 
-      /* Controls */
-      .controls { display:flex; justify-content:center; gap:12px; margin-bottom:24px; }
+      margin: 0 0 12px 0;      .logo img { width: 100%; height: auto; display:block; object-fit:contain; }
+
+      color: var(--color-text);
+
+    }      .header-content { padding: 24px; }
+
+
+
+    .header p {      .event-title { font-size: 28px; font-weight:700; margin:0 0 8px 0; }
+
+      font-size: 18px;      .event-subtitle { font-size:18px; margin:0 0 12px 0; color:var(--color-text-secondary); }
+
+      margin: 0;
+
+      color: var(--color-text-secondary);      /* Controls */
+
+    }      .controls { display:flex; justify-content:center; gap:12px; margin-bottom:24px; }
+
       .view-controls { display:flex; gap:8px; }
-      .btn { padding:8px 16px; border:1px solid var(--color-border); background:white; border-radius:8px; cursor:pointer; }
 
-      /* Layout */
-      .main-layout { display:grid; grid-template-columns:260px 1fr; gap:24px; align-items:start; }
-      .sidebar { position:sticky; top:20px; background:white; border:1px solid var(--color-border); border-radius:12px; padding:16px; }
+    .dashboards {      .btn { padding:8px 16px; border:1px solid var(--color-border); background:white; border-radius:8px; cursor:pointer; }
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));      /* Layout */
+
+      gap: 24px;      .main-layout { display:grid; grid-template-columns:260px 1fr; gap:24px; align-items:start; }
+
+      margin-bottom: 40px;      .sidebar { position:sticky; top:20px; background:white; border:1px solid var(--color-border); border-radius:12px; padding:16px; }
+
+    }
 
       .points-grid { display:grid; gap:16px; }
-      .point-card { background:white; border:1px solid var(--color-border); border-radius:12px; padding:20px; }
 
-      /* Modal */
-      .modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); }
-      .modal.active { display:flex; justify-content:center; align-items:center; }
-      .modal-content img { width:100%; height:auto; border-radius:12px; }
+    .dashboard-card {      .point-card { background:white; border:1px solid var(--color-border); border-radius:12px; padding:20px; }
 
-      @media (max-width:1024px) { .main-layout{grid-template-columns:1fr} .sidebar{position:static} }
-    </style>
-      background: #FFFFFF;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
+      background: var(--color-surface);
+
+      border: 1px solid var(--color-border);      /* Modal */
+
+      border-radius: 16px;      .modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); }
+
+      padding: 32px;      .modal.active { display:flex; justify-content:center; align-items:center; }
+
+      text-decoration: none;      .modal-content img { width:100%; height:auto; border-radius:12px; }
+
+      color: inherit;
+
+      transition: all 0.3s ease;      @media (max-width:1024px) { .main-layout{grid-template-columns:1fr} .sidebar{position:static} }
+
+      display: flex;    </style>
+
+      flex-direction: column;      background: #FFFFFF;
+
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);      border: 1px solid var(--color-border);
+
+    }      border-radius: var(--radius-lg);
+
       padding: 0;
-      <header class="header">
-        <div class="logo">
-          <img src="club_ia_legal_banner_v3.png" alt="Club IA Legal">
-        </div>
-        <div class="header-content">
+
+    .dashboard-card:hover {      <header class="header">
+
+      transform: translateY(-4px);        <div class="logo">
+
+      box-shadow: 0 8px 24px rgba(74, 155, 142, 0.15);          <img src="club_ia_legal_banner_v3.png" alt="Club IA Legal">
+
+      border-color: var(--color-primary);        </div>
+
+    }        <div class="header-content">
+
           <h1 class="event-title">Conversatorio Club IA Legal</h1>
-          <h2 class="event-subtitle">Cerebros sintéticos, derechos reales</h2>
-          <div class="event-meta">
-            <span>📅 Sábado 26 de octubre de 2025</span>
-            <span>👤 Expositor: <a href="https://www.linkedin.com/in/daniel-legaspi-96482629/" target="_blank" id="ponenteLink">Daniel Legaspi</a></span>
+
+    .dashboard-icon {          <h2 class="event-subtitle">Cerebros sintéticos, derechos reales</h2>
+
+      font-size: 48px;          <div class="event-meta">
+
+      margin-bottom: 16px;            <span>📅 Sábado 26 de octubre de 2025</span>
+
+    }            <span>👤 Expositor: <a href="https://www.linkedin.com/in/daniel-legaspi-96482629/" target="_blank" id="ponenteLink">Daniel Legaspi</a></span>
+
             <span>📊 Puntos más relevantes: 16</span>
-          </div>
-        </div>
-      </header>
 
-      <!-- Instructions -->
-      <div class="instructions">
+    .dashboard-title {          </div>
+
+      font-size: 22px;        </div>
+
+      font-weight: 700;      </header>
+
+      margin: 0 0 12px 0;
+
+      color: var(--color-text);      <!-- Instructions -->
+
+    }      <div class="instructions">
+
         <p>Lee cada punto y marca el checkbox al final para indicar que lo completaste. Ve tu progreso de lectura actualizarse automáticamente en tiempo real.</p>
-      </div>
 
-      <!-- Controls -->
-      <div class="controls">
-        <div class="tabs">
-          <button class="tab active" data-section="hot-takes">Hot takes</button>
+    .dashboard-description {      </div>
+
+      font-size: 15px;
+
+      color: var(--color-text-secondary);      <!-- Controls -->
+
+      margin: 0 0 20px 0;      <div class="controls">
+
+      flex-grow: 1;        <div class="tabs">
+
+    }          <button class="tab active" data-section="hot-takes">Hot takes</button>
+
         </div>
 
-        <div class="view-controls">
-          <button class="btn active" id="detailedView">📝 Vista Detallada</button>
-          <button class="btn" id="compactView">📋 Vista Compacta</button>
-          <button class="btn" id="mentalMapBtn">🧠 Mapa Mental</button>
-        </div>
-      </div>
+    .dashboard-meta {
+
+      display: flex;        <div class="view-controls">
+
+      justify-content: space-between;          <button class="btn active" id="detailedView">📝 Vista Detallada</button>
+
+      align-items: center;          <button class="btn" id="compactView">📋 Vista Compacta</button>
+
+      margin-bottom: 20px;          <button class="btn" id="mentalMapBtn">🧠 Mapa Mental</button>
+
+      font-size: 14px;        </div>
+
+      color: var(--color-text-secondary);      </div>
+
+    }
 
       <!-- Main Layout -->
-      <div class="main-layout">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-          <div class="sidebar-section">
-            <h4 class="sidebar-title">📊 Estadísticas</h4>
-            <div class="stat">
-              <span class="stat-label">Total de puntos</span>
-              <span class="stat-value">16</span>
-            </div>
-          </div>
 
-          <div class="sidebar-section">
-            <h4 class="sidebar-title">📈 Progreso de lectura</h4>
-            <div class="progress-bar">
-              <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <p class="stat-label" style="margin-top: 8px; text-align: center;" id="progressText">0 de 16 completados (0%)</p>
-            <button class="btn btn-full" onclick="resetProgress()">🔄 Reiniciar Progreso</button>
-          </div>
+    .dashboard-badge {      <div class="main-layout">
 
-          <div class="sidebar-section">
+      background: #e8f5e9;        <!-- Sidebar -->
+
+      color: #2e7d32;        <aside class="sidebar">
+
+      padding: 4px 12px;          <div class="sidebar-section">
+
+      border-radius: 12px;            <h4 class="sidebar-title">📊 Estadísticas</h4>
+
+      font-weight: 600;            <div class="stat">
+
+      font-size: 12px;              <span class="stat-label">Total de puntos</span>
+
+    }              <span class="stat-value">16</span>
+
+            </div>
+
+    .cta-button {          </div>
+
+      background: var(--color-primary);
+
+      color: white;          <div class="sidebar-section">
+
+      border: none;            <h4 class="sidebar-title">📈 Progreso de lectura</h4>
+
+      padding: 12px 24px;            <div class="progress-bar">
+
+      border-radius: 8px;              <div class="progress-fill" id="progressFill"></div>
+
+      font-size: 16px;            </div>
+
+      font-weight: 600;            <p class="stat-label" style="margin-top: 8px; text-align: center;" id="progressText">0 de 16 completados (0%)</p>
+
+      cursor: pointer;            <button class="btn btn-full" onclick="resetProgress()">🔄 Reiniciar Progreso</button>
+
+      transition: background 0.2s ease;          </div>
+
+      width: 100%;
+
+    }          <div class="sidebar-section">
+
             <h4 class="sidebar-title">⚡ Acciones rápidas</h4>
-            <button class="btn btn-full" onclick="checkAll()">✅ Marcar todos como leídos</button>
-            <button class="btn btn-full" onclick="uncheckAll()">❌ Marcar como no leídos</button>
-          </div>
+
+    .cta-button:hover {            <button class="btn btn-full" onclick="checkAll()">✅ Marcar todos como leídos</button>
+
+      background: var(--color-primary-hover);            <button class="btn btn-full" onclick="uncheckAll()">❌ Marcar como no leídos</button>
+
+    }          </div>
+
         </aside>
 
-        <div class="content-area">
-          <section class="section active" id="hot-takes">
-            <div class="section-header">
-              <h3 class="section-title">Puntos más relevantes</h3>
-              <span class="section-count">16 puntos</span>
-            </div>
+    .footer {
+
+      text-align: center;        <div class="content-area">
+
+      padding: 40px 20px;          <section class="section active" id="hot-takes">
+
+      border-top: 1px solid var(--color-border);            <div class="section-header">
+
+      color: var(--color-text-secondary);              <h3 class="section-title">Puntos más relevantes</h3>
+
+      font-size: 14px;              <span class="section-count">16 puntos</span>
+
+    }            </div>
+
             <div class="points-grid">
-              <!-- Points (kept from feature branch) -->
-              <!-- ... (content omitted for brevity in the file) -->
-            </div>
-          </section>
+
+    .footer a {              <!-- Points (kept from feature branch) -->
+
+      color: var(--color-primary);              <!-- ... (content omitted for brevity in the file) -->
+
+      text-decoration: none;            </div>
+
+    }          </section>
+
         </div>
-      </div>
 
-    <!-- Modal for Mental Map -->
-    <div id="mentalMapModal" class="modal">
-      <span class="modal-close" id="closeModal">&times;</span>
-      <div class="modal-content">
-        <img src="prompt-fondo-blanco.png" alt="Mapa Mental">
-      </div>
-    </div>
+    .footer a:hover {      </div>
 
-    <script>
-      // Minimal script hookups (detailed logic exists in dashboard files)
-      document.addEventListener('DOMContentLoaded', function() {
-        const mentalBtn = document.getElementById('mentalMapBtn');
-        if (mentalBtn) mentalBtn.addEventListener('click', () => window.location.href = 'mapa_mental.html');
-      });
-    </script>
-  </body>
-  </html>
-      padding: 40px 20px;
-      border-top: 1px solid var(--color-border);
-      color: var(--color-text-secondary);
-      font-size: 14px;
-    }
-
-    .footer a {
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-
-    .footer a:hover {
       text-decoration: underline;
-    }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .header h1 {
-        font-size: 28px;
-      }
+    }    <!-- Modal for Mental Map -->
+
+    <div id="mentalMapModal" class="modal">
+
+    @media (max-width: 768px) {      <span class="modal-close" id="closeModal">&times;</span>
+
+      .header h1 {      <div class="modal-content">
+
+        font-size: 28px;        <img src="prompt-fondo-blanco.png" alt="Mapa Mental">
+
+      }      </div>
+
+    </div>
 
       .dashboards {
-        grid-template-columns: 1fr;
-      }
 
-      .dashboard-card {
+        grid-template-columns: 1fr;    <script>
+
+      }      // Minimal script hookups (detailed logic exists in dashboard files)
+
+      document.addEventListener('DOMContentLoaded', function() {
+
+      .dashboard-card {        const mentalBtn = document.getElementById('mentalMapBtn');
+
+        padding: 24px;        if (mentalBtn) mentalBtn.addEventListener('click', () => window.location.href = 'mapa_mental.html');
+
+      }      });
+
+    }    </script>
+
+  </style>  </body>
+
+</head>  </html>
+
+<body>      padding: 40px 20px;
+
+  <div class="container">      border-top: 1px solid var(--color-border);
+
+    <!-- Header -->      color: var(--color-text-secondary);
+
+    <div class="header">      font-size: 14px;
+
+      <div class="logo">    }
+
+        <img src="dashboard3/club_ia_legal_banner_v3.png" alt="Club IA Legal">
+
+      </div>    .footer a {
+
+      <div class="header-content">      color: var(--color-primary);
+
+        <h1>Club IA Legal</h1>      text-decoration: none;
+
+        <p>Dashboards Interactivos de Conversatorios y Eventos</p>    }
+
+      </div>
+
+    </div>    .footer a:hover {
+
+      text-decoration: underline;
+
+    <!-- Dashboards Grid -->    }
+
+    <div class="dashboards">
+
+      <!-- Dashboard 1 -->    /* Responsive */
+
+      <a href="dashboard1/index.html" class="dashboard-card">    @media (max-width: 768px) {
+
+        <div class="dashboard-icon">☣️📋</div>      .header h1 {
+
+        <h3 class="dashboard-title">Gestión de riesgos de sistemas de Inteligencia Artificial</h3>        font-size: 28px;
+
+        <p class="dashboard-description">Conversatorio con Luis Enríquez sobre la Gestión de Riesgos en sistemas de IA.</p>      }
+
+        <div class="dashboard-meta">
+
+          <span>16 puntos</span>      .dashboards {
+
+          <span class="dashboard-badge">Activo</span>        grid-template-columns: 1fr;
+
+        </div>      }
+
+        <button class="cta-button">Acceder →</button>
+
+      </a>      .dashboard-card {
+
         padding: 24px;
-      }
->>>>>>> origin/main
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- Header -->
-<<<<<<< HEAD
-    <header class="header">
-      <div class="logo">
+
+      <!-- Dashboard 2 -->      }
+
+      <a href="dashboard2/index.html" class="dashboard-card">>>>>>>> origin/main
+
+        <div class="dashboard-icon">🖥️📊</div>    }
+
+        <h3 class="dashboard-title">Cómo usar la IA en la práctica jurídica: del prompt a la acción</h3>  </style>
+
+        <p class="dashboard-description">Conversatorio con María Angélica Ramírez sobre el uso de la IA en la práctica jurídica.</p></head>
+
+        <div class="dashboard-meta"><body>
+
+          <span>16 puntos</span>  <div class="container">
+
+          <span class="dashboard-badge">Activo</span>    <!-- Header -->
+
+        </div><<<<<<< HEAD
+
+        <button class="cta-button">Acceder →</button>    <header class="header">
+
+      </a>      <div class="logo">
+
         <img src="club_ia_legal_banner_v3.png" alt="Club IA Legal">
-      </div>
-      <div class="header-content">
-        <h1 class="event-title">Conversatorio Club IA Legal</h1>
-        <h2 class="event-subtitle">Cerebros sintéticos, derechos reales</h2>
-        <div class="event-meta">
-          <span>📅 Sábado 26 de octubre de 2025</span>
-          <span>👤 Expositor: <a href="https://www.linkedin.com/in/daniel-legaspi-96482629/" target="_blank" id="ponenteLink">Daniel Legaspi</a></span>
-          <span>📊 Puntos más relevantes: 16</span>
-        </div>
-      </div>
-    </header>
 
-    <!-- Instructions -->
-    <div class="instructions">
-      <p>Lee cada punto y marca el checkbox al final para indicar que lo completaste. Ve tu progreso de lectura actualizarse automáticamente en tiempo real.</p>
-    </div>
+      <!-- Dashboard 3 -->      </div>
 
-    <!-- Controls -->
-    <div class="controls">
-      <div class="tabs">
-        <button class="tab active" data-section="hot-takes">Hot takes</button>
-      </div>
+      <a href="dashboard3/index.html" class="dashboard-card">      <div class="header-content">
 
-      <div class="view-controls">
+        <div class="dashboard-icon">🧠⚖️</div>        <h1 class="event-title">Conversatorio Club IA Legal</h1>
+
+        <h3 class="dashboard-title">Cerebros Sintéticos, Derechos Reales</h3>        <h2 class="event-subtitle">Cerebros sintéticos, derechos reales</h2>
+
+        <p class="dashboard-description">Conversatorio con Daniel Legaspi sobre IA generativa, derechos de autor y propiedad intelectual. Incluye reproductor de video resumen.</p>        <div class="event-meta">
+
+        <div class="dashboard-meta">          <span>📅 Sábado 26 de octubre de 2025</span>
+
+          <span>16 puntos</span>          <span>👤 Expositor: <a href="https://www.linkedin.com/in/daniel-legaspi-96482629/" target="_blank" id="ponenteLink">Daniel Legaspi</a></span>
+
+          <span class="dashboard-badge">Activo</span>          <span>📊 Puntos más relevantes: 16</span>
+
+        </div>        </div>
+
+        <button class="cta-button">Acceder →</button>      </div>
+
+      </a>    </header>
+
+
+
+      <!-- Dashboard 4 -->    <!-- Instructions -->
+
+      <a href="dashboard4/index.html" class="dashboard-card">    <div class="instructions">
+
+        <div class="dashboard-icon">🗺️🤖</div>      <p>Lee cada punto y marca el checkbox al final para indicar que lo completaste. Ve tu progreso de lectura actualizarse automáticamente en tiempo real.</p>
+
+        <h3 class="dashboard-title">IA: El reto Geopolítico</h3>    </div>
+
+        <p class="dashboard-description">Conversatorio con Erick Iriarte sobre las implicaciones globales de la política en materia de IA. Incluye reproductor de video resumen.</p>
+
+        <div class="dashboard-meta">    <!-- Controls -->
+
+          <span>16 puntos</span>    <div class="controls">
+
+          <span class="dashboard-badge">Activo</span>      <div class="tabs">
+
+        </div>        <button class="tab active" data-section="hot-takes">Hot takes</button>
+
+        <button class="cta-button">Acceder →</button>      </div>
+
+      </a>
+
+    </div>      <div class="view-controls">
+
         <button class="btn active" id="detailedView">📝 Vista Detallada</button>
-        <button class="btn" id="compactView">📋 Vista Compacta</button>
-        <button class="btn" id="mentalMapBtn">🧠 Mapa Mental</button>
-      </div>
-    </div>
 
-    <!-- Main Layout -->
-    <div class="main-layout">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <div class="sidebar-section">
+    <!-- Footer -->        <button class="btn" id="compactView">📋 Vista Compacta</button>
+
+    <div class="footer">        <button class="btn" id="mentalMapBtn">🧠 Mapa Mental</button>
+
+      <p>Club IA Legal © 2025 |       </div>
+
+        <a href="https://www.linkedin.com/company/club-ia-legal" target="_blank">LinkedIn</a> •     </div>
+
+        <a href="https://github.com/hackbug38/Dashboards-Conversatorios-Club-IA-Legal" target="_blank">GitHub</a>
+
+      </p>    <!-- Main Layout -->
+
+    </div>    <div class="main-layout">
+
+  </div>      <!-- Sidebar -->
+
+</body>      <aside class="sidebar">
+
+</html>        <div class="sidebar-section">
+
           <h4 class="sidebar-title">📊 Estadísticas</h4>
           <div class="stat">
             <span class="stat-label">Total de puntos</span>
