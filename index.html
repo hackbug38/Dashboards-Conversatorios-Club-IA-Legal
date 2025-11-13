@@ -42,30 +42,43 @@
 
     /* Header */
     .header {
-      text-align: center;
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 0;
       margin-bottom: var(--space-32);
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
     }
 
     .logo-section {
-      margin-bottom: var(--space-24);
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
 
     .logo-section img {
-      max-width: 300px;
+      width: 100%;
       height: auto;
-      margin-bottom: var(--space-16);
+      display: block;
+      object-fit: contain;
+    }
+
+    .header-content {
+      padding: var(--space-24);
     }
 
     .header h1 {
       font-size: 48px;
       font-weight: 700;
-      margin: 0;
-      color: var(--color-primary);
-      margin-bottom: var(--space-16);
+      margin: 0 0 var(--space-8) 0;
+      color: var(--color-text);
     }
 
     .header p {
-      font-size: 20px;
+      font-size: 18px;
       color: var(--color-text-secondary);
       margin: 0;
     }
@@ -274,10 +287,12 @@
     <!-- Header -->
     <div class="header">
       <div class="logo-section">
-        <img src="dashboard3/club_ia_legal_banner_v3.png" alt="Club IA Legal Logo">
+        <img src="dashboard3/club_ia_legal_banner_v3.png" alt="Club IA Legal">
       </div>
-      <h1>Club IA Legal</h1>
-      <p>Conversatorios sobre Inteligencia Artificial y Derecho</p>
+      <div class="header-content">
+        <h1>Club IA Legal</h1>
+        <p>Conversatorios sobre Inteligencia Artificial y Derecho</p>
+      </div>
     </div>
 
     <!-- Featured Dashboard -->
