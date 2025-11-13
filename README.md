@@ -12,6 +12,14 @@ Dashboards interactivos para visualizar y seguir los aspectos más importantes d
 
 ---
 
+## 🎉 NUEVO: Repositorio Limpio y Organizado
+
+> **🏆 ¡Limpieza Completa Exitosa!** - Eliminadas 7 ramas obsoletas (-62.5%), preservados 53 commits en tags permanentes.
+>
+> 📖 **[Ver Resumen Ejecutivo Visual Completo →](./LIMPIEZA_RAMAS_RESUMEN.md)**
+
+---
+
 ## 📋 Descripción
 
 Este repositorio contiene **dashboards interactivos** diseñados para documentar y hacer seguimiento de los puntos más relevantes de los conversatorios, talleres y eventos del **Club IA Legal**. Cada dashboard permite a los usuarios:
@@ -137,6 +145,7 @@ JavaScript     - Interactividad y lógica de negocio (Vanilla JS)
 ├── 📄 index.html                     # Punto de entrada principal
 ├── 📄 home.html                      # Hub de navegación central
 ├── 📄 README.md                      # Este archivo
+├── 📄 LIMPIEZA_RAMAS_RESUMEN.md      # 🎉 Resumen visual de limpieza de ramas
 ├── 📄 .gitignore                     # Configuración git
 ├── 📄 .gitattributes                 # Configuración Git LFS
 ├── 📄 CONTRIBUTING.md                # Guía de contribución
@@ -173,6 +182,8 @@ JavaScript     - Interactividad y lógica de negocio (Vanilla JS)
 │
 ├── 📁 docs/                          # Documentación del proyecto
 │   ├── BRANCH_ANALYSIS.md            # Análisis de ramas
+│   ├── RESUMEN_MEJORAS_RAMAS.md      # Resumen ejecutivo de mejoras
+│   ├── INVESTIGACION_*.md            # Investigaciones técnicas
 │   ├── CAMBIOS_REALIZADOS.txt
 │   ├── CHECKLIST_FINAL.txt
 │   ├── GITHUB_PUSH_INSTRUCTIONS.md
