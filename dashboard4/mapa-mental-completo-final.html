@@ -44,28 +44,32 @@
         }
 
         .node.level-0 rect {
-            fill: #667eea;
-            stroke: #764ba2;
+            /* Tema central: color primario del Dashboard */
+            fill: #4A9B8E;
+            stroke: #3e8277;
         }
 
         .node.level-1 rect {
-            fill: #4a5568;
-            stroke: #718096;
+            /* Categorías principales: tono neutro/teal oscuro */
+            fill: #626c71;
+            stroke: #506166;
         }
 
         .node.level-2 rect {
-            fill: #2d5748;
-            stroke: #3d6858;
+            /* Subcategorías: variante más oscura del primario */
+            fill: #2b665a;
+            stroke: #3b7d6f;
         }
 
         .node.level-3 rect {
-            fill: #1a4d3d;
-            stroke: #2d6d5d;
+            /* Detalles: tono profundo para contraste */
+            fill: #1f4d43;
+            stroke: #2a5d50;
         }
 
         .node.collapsed rect {
-            fill: #667eea !important;
-            stroke: #764ba2 !important;
+            fill: #4A9B8E !important;
+            stroke: #3e8277 !important;
         }
 
         .node rect:hover {
@@ -93,7 +97,7 @@
 
         .link {
             fill: none;
-            stroke: #4a5568;
+            stroke: #626c71;
             stroke-width: 2px;
             stroke-opacity: 0.4;
         }
@@ -102,7 +106,7 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(45, 55, 72, 0.95);
+            background: rgba(74, 155, 142, 0.95);
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.4);
@@ -112,7 +116,7 @@
 
         .controls h3 {
             margin-bottom: 15px;
-            color: #667eea;
+            color: #ffffff; /* blanco para alto contraste sobre el fondo verde/teal */
             font-size: 16px;
             text-align: center;
         }
@@ -122,7 +126,7 @@
             width: 100%;
             margin: 8px 0;
             padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4A9B8E 0%, #3e8277 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -152,7 +156,7 @@
 
         .info h1 {
             margin-bottom: 10px;
-            color: #667eea;
+            color: #4A9B8E;
             font-size: 22px;
             line-height: 1.3;
         }
@@ -176,7 +180,7 @@
 
         .legend h3 {
             margin-bottom: 10px;
-            color: #667eea;
+            color: #4A9B8E;
             font-size: 14px;
         }
 
@@ -211,13 +215,13 @@
             opacity: 0;
             transition: opacity 0.3s;
             z-index: 2000;
-            border: 2px solid #667eea;
+            border: 2px solid #4A9B8E;
             max-width: 350px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
 
         .tooltip strong {
-            color: #667eea;
+            color: #4A9B8E;
             display: block;
             margin-bottom: 5px;
             font-size: 14px;
@@ -245,19 +249,19 @@
         <div class="legend">
             <h3>📍 Leyenda</h3>
             <div class="legend-item">
-                <div class="legend-color" style="background: #667eea; border-color: #764ba2;"></div>
+                <div class="legend-color" style="background: #4A9B8E; border-color: #3e8277;"></div>
                 <span>Tema Central</span>
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: #4a5568; border-color: #718096;"></div>
+                <div class="legend-color" style="background: #626c71; border-color: #506166;"></div>
                 <span>Categorías Principales</span>
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: #2d5748; border-color: #3d6858;"></div>
+                <div class="legend-color" style="background: #2b665a; border-color: #3b7d6f;"></div>
                 <span>Subcategorías</span>
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: #1a4d3d; border-color: #2d6d5d;"></div>
+                <div class="legend-color" style="background: #1f4d43; border-color: #2a5d50;"></div>
                 <span>Detalles</span>
             </div>
             <p style="margin-top: 12px;">🖱️ Click: Expandir/Colapsar</p>
