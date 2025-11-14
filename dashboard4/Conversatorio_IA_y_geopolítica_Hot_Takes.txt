@@ -1,0 +1,45 @@
+Fecha: 2 de noviembre de 2025
+Tema: IA, el reto geopol�tico
+Expositor: Erick Iriarte Ahon
+Hot takes:
+1. Lo que hoy en d�a est� en boga es la llamada �inteligencia artificial generativa�.
+2. Lo que pasa con la IA hoy en d�a es un s�mil a lo que sucede con las armas. Puede que todos quieran una, puedes comprarla y llevarla contigo, pero sin regulaci�n puede ser peligroso.
+3. Tomar en cuenta el criterio de �garbage in, garbage out�. Si la IA recibe �basura� (mala informaci�n) de input, va a responder �basura� como output.
+4. La IA es una herramienta que nos ayuda a procesar informaci�n m�s r�pido. Sin embargo, debemos tener cuidado: puede que la inferencia sea m�s r�pida, pero no necesariamente implica que la respuesta ser� la correcta, precisa o no alucinada.
+5. La IA tiene una cantidad limitada de comprensi�n (tokens)
+6. Una IA alucina como consecuencia del mandato que tiene programado: tiene que dar una respuesta. Los humanos, por el contrario, alucinamos sobre una base consciente detr�s.
+7. Los derechos humanos solo son de los humanos, y ello es el fundamento para que las IA no reciban derechos, porque ello los podr�a hacer titulares de derechos de autor.
+8. Stuart Russell y Peter Norvig clasifican a la IA en esta tipolog�a:
+i. Sistemas que piensan como humanos: son sistemas que emulan el pensamiento humano. Por ejemplo, las redes neuronales artificiales, la automatizaci�n de actividades que vinculamos con procesos de pensamiento humano, actividades como la toma de decisiones, resoluci�n de problemas y aprendizaje.
+ii. Sistemas que act�an como humanos: son sistemas que emulan el actuar humano; es decir, imitan el comportamiento humano. Por ejemplo, la rob�tica, los asistentes virtuales, los androides y todo el estudio de c�mo lograr que las computadoras realicen tareas que, por el momento, los humanos hacen mejor.
+iii. Sistemas que piensan racionalmente: sistemas que con l�gica (idealmente) tratan de imitar el pensamiento racional del ser humano. Por ejemplo, los sistemas y expertos.
+iv. Sistemas que act�an racionalmente: son sistemas que tratan de emular la toma de decisiones racional humana. Por ejemplo, los agentes de IA.
+9. La mayor�a de las sociedades hablan de la creaci�n de seres a trav�s de mitos creacionistas religiosos: desde la mitolog�a griega (Prometeo), babilonia, sumeria, el mito de Ad�n y Eva, todas culturas y religiones parten de una misma premisa: alguien cre� a los humanos, alguien le dio a esa cosa inerte, a trav�s del aliento de Dios, vida a esa creaci�n.
+10. Algo similar pasa con la relaci�n actual entre el hombre y su creaci�n, la IA. Este es un tema ampliamente debatido en la ciencia ficci�n por autores como Isaac Asimov. Por ejemplo, vemos en sus obras una preocupaci�n por dotar de estructura, casi ley natural, a la rob�tica e IA a trav�s de las leyes de la rob�tica en pos de armonizar a la humanidad con su nueva creaci�n.
+11. La idea es tener un conjunto de reglas para la IA, que a�n no es una IA autoconstruida. Los humanos seguimos siendo los responsables por la IA. Y los humanos tenemos sesgos y en esa medida puede ser usada para da�ar a otros.
+12. Los prejuicios en la IA provienen del humano y no son inherentes a la propia IA. El prejuicio es un insumo en la programaci�n.
+13. La regulaci�n debe atender el manejo y control de los sesgos en la construcci�n de la IA (Responsabilidad del constructor de la IA)
+14. Una IA no tiene derechos al no ser un humano, no tiene derecho al nombre, laborales, autor, etc.
+Geopol�tica:
+1. La IA es un producto casi privativo del hemisferio norte, particularmente de potencias como Estados Unidos y China. Europa tiene un rol m�s regulador de la IA y no tanto productor.
+2. El enfoque regulatorio en EE.UU. est� pensado como en la obra de 1984. China ha variado el enfoque sin dejar de ser autoritario, pero se muestra como �buena onda�.
+3. China se ha expandido mucho m�s r�pido que EE.UU. y ha copado de acuerdos comerciales e inversi�n en infraestructura en el sur Global. �frica es pr�cticamente una colonia de ultramar China y tambi�n mantienen inversiones en materia de transporte estrat�gicas en Latinoam�rica, resultando que China le gane mucho territorio y esfera de influencia a EE.UU.
+4. EE.UU. maneja moratorias para regular y no aboga por crear regulaci�n. El problema es que cuando la tecnolog�a se sale de control, es muy dificil comenzar a regular. Esto promueve la innovaci�n, pero puede generar problemas a futuro. China, por otro lado, regula, permite la innovaci�n pero toda participaci�n tiene control directo estatal.
+5. La tecnolog�a clave para construir sistemas de IA reside en el norte, pero la explotaci�n de los recursos para desarrollar la tecnolog�a que le sirve de apoyo proviene del sur.
+6. No estamos construyendo IA en el llamado �sur global�. Si no invertimos en eso, vamos a perder la capacidad de creaci�n y los ingresos econ�micos asociados a eso.
+7. El derecho romano germ�nico nos obliga a regular, que las cosas funcionen dentro de un marco. El common law es m�s facilitador para crear cosas fuera del marco y es m�s �til para la innovaci�n; pero tiene consecuencias negativas cuando la tecnolog�a se sale de control por ausencia de regulaci�n.
+8. El blockchain no tuvo el impacto social que tiene la IA.
+Tendencias:
+1. La IA require much�sima agua para operar (enfriamiento) y est� generando un impacto real en el acceso al agua.
+2. La disponibilidad y generaci�n de electricidad es cr�tica para la operaci�n de la IA. LATAM tiene poca interconexi�n el�ctrica.
+3. La IA es una inteligencia hecha por humanos. Los responsables son humanos.
+4. Necesitamos generar puntos regulatorios que sean comunes a todos.
+5. La carrera armament�stica en materia de IA busca tanto copar el mercado con IA y llegar a la IA general.
+6. Per� es m�s propensa a usar IA china dados nuestros lazos con china y la inversi�n china en el Per�.
+7. La puerta trasera: �Qui�n tiene acceso a ella? La informaci�n que creemos que mandamos a un lugar A, en verdad se redirige a B o pasa por toda la arquitectura de B (por ejemplo, la marca del celular, las plataformas de las aplicaciones que usas en el celular) antes de llegar a A.
+8. Recurso estrat�gico: tierras raras. Fundamenta la construcci�n de tecnolog�a como celulares, computadoras, etc.
+
+******
+
+
+

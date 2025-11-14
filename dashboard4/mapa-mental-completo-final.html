@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA: El Reto Geopolítico - Mapa Mental Interactivo</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            overflow: hidden;
+            color: #fff;
+        }
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        #mindmap {
+            width: 100%;
+            height: 100%;
+            cursor: grab;
+        }
+
+        #mindmap:active {
+            cursor: grabbing;
+        }
+
+        .node rect {
+            stroke-width: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            rx: 6;
+            ry: 6;
+        }
+
+        .node.level-0 rect {
+            fill: #667eea;
+            stroke: #764ba2;
+        }
+
+        .node.level-1 rect {
+            fill: #4a5568;
+            stroke: #718096;
+        }
+
+        .node.level-2 rect {
+            fill: #2d5748;
+            stroke: #3d6858;
+        }
+
+        .node.level-3 rect {
+            fill: #1a4d3d;
+            stroke: #2d6d5d;
+        }
+
+        .node.collapsed rect {
+            fill: #667eea !important;
+            stroke: #764ba2 !important;
+        }
+
+        .node rect:hover {
+            filter: brightness(1.3);
+            stroke-width: 3px;
+        }
+
+        .node text {
+            font-size: 13px;
+            font-weight: 500;
+            fill: #ffffff;
+            pointer-events: none;
+            text-anchor: middle;
+        }
+
+        .node.level-0 text {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .node.level-1 text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .link {
+            fill: none;
+            stroke: #4a5568;
+            stroke-width: 2px;
+            stroke-opacity: 0.4;
+        }
+
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(45, 55, 72, 0.95);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .controls h3 {
+            margin-bottom: 15px;
+            color: #667eea;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .controls button {
+            display: block;
+            width: 100%;
+            margin: 8px 0;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(45, 55, 72, 0.95);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            max-width: 450px;
+            backdrop-filter: blur(10px);
+        }
+
+        .info h1 {
+            margin-bottom: 10px;
+            color: #667eea;
+            font-size: 22px;
+            line-height: 1.3;
+        }
+
+        .info p {
+            font-size: 13px;
+            color: #cbd5e0;
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(45, 55, 72, 0.95);
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            font-size: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .legend h3 {
+            margin-bottom: 10px;
+            color: #667eea;
+            font-size: 14px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            color: #cbd5e0;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .legend p {
+            margin: 5px 0;
+            color: #cbd5e0;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.92);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 2000;
+            border: 2px solid #667eea;
+            max-width: 350px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .tooltip strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <svg id="mindmap"></svg>
+        
+        <div class="info">
+            <h1>IA: El Reto Geopolítico</h1>
+            <p style="color: #a0aec0; font-style: italic;">Mapa mental interactivo - Conversatorio Club IA Legal</p>
+            <p style="color: #cbd5e0; margin-top: 8px; font-size: 12px;">Expositor: Erick Iriarte Ahon | 2 de noviembre de 2025</p>
+        </div>
+
+        <div class="controls">
+            <h3>⚙️ Controles</h3>
+            <button id="btnExpandAll">📂 Expandir Todo</button>
+            <button id="btnCollapseAll">📁 Colapsar Todo</button>
+            <button id="btnCenter">🎯 Centrar</button>
+            <button id="btnBack">← Volver al Dashboard</button>
+        </div>
+
+        <div class="legend">
+            <h3>📍 Leyenda</h3>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #667eea; border-color: #764ba2;"></div>
+                <span>Tema Central</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4a5568; border-color: #718096;"></div>
+                <span>Categorías Principales</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #2d5748; border-color: #3d6858;"></div>
+                <span>Subcategorías</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #1a4d3d; border-color: #2d6d5d;"></div>
+                <span>Detalles</span>
+            </div>
+            <p style="margin-top: 12px;">🖱️ Click: Expandir/Colapsar</p>
+            <p>🔍 Scroll: Zoom in/out</p>
+            <p>✋ Arrastrar: Mover vista</p>
+        </div>
+
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <script>
+        // DATOS COMPLETOS DEL MAPA MENTAL
+        const mindMapData = {
+            name: "IA: El Reto Geopolítico",
+            level: 0,
+            children: [
+                {
+                    name: "Fundamentos de IA",
+                    level: 1,
+                    children: [
+                        {
+                            name: "IA Generativa",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Lo que está en boga actualmente",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Limitaciones: tokens (comprensión limitada)",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Tipología de Russell y Norvig",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Sistemas que piensan como humanos",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Sistemas que actúan como humanos",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Sistemas que piensan racionalmente",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Sistemas que actúan racionalmente",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Características Técnicas",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Garbage in, garbage out",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Velocidad de procesamiento ≠ precisión",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Alucinaciones: mandato de responder siempre",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "Marco Legal y Ético",
+                    level: 1,
+                    children: [
+                        {
+                            name: "Derechos y Regulación",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Derechos humanos solo para humanos",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "IA no tiene derechos (nombre, laborales, autor)",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Necesidad de reglas para IA no autoconstruida",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "IA similar a armas: peligrosa sin regulación",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Responsabilidad Humana",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Humanos responsables por la IA",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Sesgos provienen del programador",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Regulación debe controlar sesgos en construcción",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Referencias Culturales",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Mitos creacionistas: hombre crea IA",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Asimov: leyes de la robótica",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "Contexto Geopolítico",
+                    level: 1,
+                    children: [
+                        {
+                            name: "Actores Globales",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "EE.UU.: Moratorias sin regulación, innovación libre",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "China: Control estatal directo, expansión rápida",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Europa: Rol regulador, no productor",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Sur Global",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Tecnología en el norte, recursos en el sur",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "No construimos IA = pérdida de ingresos",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "África: colonia de ultramar China",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Perú: propenso a usar IA china",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Sistemas Jurídicos",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Romano-germánico: obliga a regular",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Common law: facilita innovación, riesgos sin regulación",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "Tendencias y Desafíos",
+                    level: 1,
+                    children: [
+                        {
+                            name: "Recursos Estratégicos",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Agua: enfriamiento de IA impacta acceso",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Electricidad: LATAM poca interconexión",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Tierras raras: base de tecnología",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Carrera Tecnológica",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Copar mercado + llegar a IA general",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Blockchain sin el impacto social de IA",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Seguridad y Privacidad",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "La puerta trasera: quién accede a tu información",
+                                    level: 3,
+                                    children: []
+                                },
+                                {
+                                    name: "Información pasa por arquitectura B antes de llegar a A",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Necesidades Globales",
+                            level: 2,
+                            children: [
+                                {
+                                    name: "Puntos regulatorios comunes a todos",
+                                    level: 3,
+                                    children: []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Variables globales
+        let root, g, svg, zoom, tree, tooltip;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        // Función para calcular el ancho del texto
+        function getTextWidth(text, fontSize = 13) {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            context.font = `${fontSize}px "Segoe UI", sans-serif`;
+            return context.measureText(text).width;
+        }
+
+        // Inicializar
+        function init() {
+            // Crear SVG
+            svg = d3.select("#mindmap")
+                .attr("width", width)
+                .attr("height", height);
+
+            g = svg.append("g");
+
+            // Tooltip
+            tooltip = d3.select("#tooltip");
+
+            // Crear layout de árbol horizontal
+            tree = d3.tree()
+                .nodeSize([50, 300])
+                .separation((a, b) => 1);
+
+            // Crear jerarquía
+            root = d3.hierarchy(mindMapData);
+            root.x0 = height / 2;
+            root.y0 = 0;
+
+            // Asignar IDs únicos
+            let nodeId = 0;
+            root.descendants().forEach(d => {
+                d.id = nodeId++;
+            });
+
+            // Colapsar todos los nodos excepto el root, incluyendo los de nivel 3
+            root.descendants().forEach(d => {
+                if (d.children) {
+                    d._children = d.children;
+                    d._children.forEach(collapse);
+                    d.children = null;
+                }
+            });
+            // Mantener solo el root visible
+            if (root._children) {
+                root.children = root._children;
+                root._children = null;
+            }
+
+            // Zoom behavior
+            zoom = d3.zoom()
+                .scaleExtent([0.1, 3])
+                .on("zoom", (event) => {
+                    g.attr("transform", event.transform);
+                });
+
+            svg.call(zoom);
+
+            // Event listeners para botones
+            document.getElementById('btnExpandAll').addEventListener('click', expandAll);
+            document.getElementById('btnCollapseAll').addEventListener('click', collapseAll);
+            document.getElementById('btnCenter').addEventListener('click', centerView);
+            document.getElementById('btnBack').addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+
+            // Renderizar
+            update(root);
+            
+            // Centrar vista inicial después de que el DOM y D3 terminen de renderizar
+            setTimeout(() => {
+                centerView();
+            }, 1000);
+        }
+
+        // Función para colapsar nodos
+        function collapse(d) {
+            if (d.children) {
+                d._children = d.children;
+                d._children.forEach(collapse);
+                d.children = null;
+            }
+        }
+
+        // Actualizar el árbol
+        function update(source) {
+            const duration = 750;
+
+            // Calcular nuevo layout
+            const treeData = tree(root);
+            const nodes = treeData.descendants();
+            const links = treeData.links();
+
+            // Actualizar nodos
+            const node = g.selectAll("g.node")
+                .data(nodes, d => d.id);
+
+            // Enter new nodes
+            const nodeEnter = node.enter().append("g")
+                .attr("class", d => {
+                    let classes = "node level-" + d.data.level;
+                    if (d._children) classes += " collapsed";
+                    return classes;
+                })
+                .attr("transform", d => `translate(${source.y0},${source.x0})`)
+                .on("click", (event, d) => click(event, d))
+                .on("mouseover", function(event, d) {
+                    d3.select(this).select("rect")
+                        .transition()
+                        .duration(200)
+                        .style("filter", "brightness(1.4)");
+                    
+                    tooltip
+                        .style("opacity", 1)
+                        .html(`<strong>${d.data.name}</strong><br><em>${d.children ? 'Click para colapsar' : d._children ? 'Click para expandir' : 'Nodo final'}</em>`)
+                        .style("left", (event.pageX + 15) + "px")
+                        .style("top", (event.pageY - 40) + "px");
+                })
+                .on("mouseout", function(event, d) {
+                    d3.select(this).select("rect")
+                        .transition()
+                        .duration(200)
+                        .style("filter", "brightness(1)");
+                    
+                    tooltip.style("opacity", 0);
+                });
+
+            // Añadir rectángulos
+            nodeEnter.each(function(d) {
+                const fontSize = d.data.level === 0 ? 16 : d.data.level === 1 ? 14 : 13;
+                const textWidth = getTextWidth(d.data.name, fontSize);
+                const padding = 20;
+                const rectWidth = textWidth + padding;
+                const rectHeight = 30;
+
+                d3.select(this).append("rect")
+                    .attr("width", rectWidth)
+                    .attr("height", rectHeight)
+                    .attr("x", -rectWidth / 2)
+                    .attr("y", -rectHeight / 2);
+
+                d3.select(this).append("text")
+                    .attr("dy", "0.35em")
+                    .text(d.data.name)
+                    .style("fill-opacity", 0);
+            });
+
+            // Transición de nodos
+            const nodeUpdate = nodeEnter.merge(node);
+
+            nodeUpdate.transition()
+                .duration(duration)
+                .attr("transform", d => `translate(${d.y},${d.x})`)
+                .attr("class", d => {
+                    let classes = "node level-" + d.data.level;
+                    if (d._children) classes += " collapsed";
+                    return classes;
+                });
+
+            nodeUpdate.select("text")
+                .transition()
+                .duration(duration)
+                .style("fill-opacity", 1);
+
+            // Exit nodes
+            const nodeExit = node.exit().transition()
+                .duration(duration)
+                .attr("transform", d => `translate(${source.y},${source.x})`)
+                .remove();
+
+            nodeExit.select("rect")
+                .attr("width", 0)
+                .attr("height", 0);
+
+            nodeExit.select("text")
+                .style("fill-opacity", 0);
+
+            // Actualizar links
+            const link = g.selectAll("path.link")
+                .data(links, d => d.target.id);
+
+            // Enter new links
+            const linkEnter = link.enter().insert("path", "g")
+                .attr("class", "link")
+                .attr("d", d => {
+                    const o = {x: source.x0, y: source.y0};
+                    return diagonal(o, o);
+                });
+
+            // Transición de links
+            linkEnter.merge(link).transition()
+                .duration(duration)
+                .attr("d", d => diagonal(d.source, d.target));
+
+            // Exit links
+            link.exit().transition()
+                .duration(duration)
+                .attr("d", d => {
+                    const o = {x: source.x, y: source.y};
+                    return diagonal(o, o);
+                })
+                .remove();
+
+            // Guardar posición antigua
+            nodes.forEach(d => {
+                d.x0 = d.x;
+                d.y0 = d.y;
+            });
+        }
+
+        // Función para crear curvas suaves
+        function diagonal(s, d) {
+            return `M ${s.y} ${s.x}
+                    C ${(s.y + d.y) / 2} ${s.x},
+                      ${(s.y + d.y) / 2} ${d.x},
+                      ${d.y} ${d.x}`;
+        }
+
+        // Click en nodo
+        function click(event, d) {
+            // Solo permitir colapsar/expandir si el nodo tiene hijos reales (no arrays vacíos)
+            const hasChildren = d.children && d.children.length > 0;
+            const hasHiddenChildren = d._children && d._children.length > 0;
+            
+            if (hasChildren) {
+                d._children = d.children;
+                d.children = null;
+            } else if (hasHiddenChildren) {
+                d.children = d._children;
+                d._children = null;
+            } else {
+                // Nodo sin hijos, no hacer nada
+                return;
+            }
+            update(d);
+            
+            // Recentrar suavemente después de que la animación de expansión termine
+            setTimeout(() => {
+                centerView();
+            }, 800);
+        }
+
+        // Funciones de control
+        function expandAll() {
+            function expand(d) {
+                if (d._children) {
+                    d.children = d._children;
+                    d._children = null;
+                }
+                if (d.children) {
+                    d.children.forEach(expand);
+                }
+            }
+            expand(root);
+            update(root);
+            setTimeout(() => {
+                centerView();
+            }, 800);
+        }
+
+        function collapseAll() {
+            root.descendants().forEach(d => {
+                if (d.children && d.depth > 0) {
+                    d._children = d.children;
+                    d.children = null;
+                }
+            });
+            update(root);
+            setTimeout(() => {
+                centerView();
+            }, 800);
+        }
+
+        function centerView() {
+            const bounds = g.node().getBBox();
+            const fullWidth = bounds.width;
+            const fullHeight = bounds.height;
+            const scale = 0.75 / Math.max(fullWidth / width, fullHeight / height);
+            const translate = [
+                width / 2 - scale * (bounds.x + fullWidth / 2),
+                height / 2 - scale * (bounds.y + fullHeight / 2)
+            ];
+
+            svg.transition()
+                .duration(750)
+                .ease(d3.easeCubicOut)
+                .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
+        }
+
+        // Iniciar cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>
