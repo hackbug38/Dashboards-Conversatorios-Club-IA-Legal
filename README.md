@@ -416,8 +416,9 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ### Club IA Legal
 
-- Website: [Club IA Legal](https://www.linkedin.com/company/club-ia-legal)
-- LinkedIn: [@clubialegal](https://www.linkedin.com/company/club-ia-legal)
+- 🌐 Website: [https://clubialegal.org/](https://clubialegal.org/)
+- 💼 LinkedIn: [https://linkedin.com/company/club-ia-legal](https://linkedin.com/company/club-ia-legal)
+- 🤖 Nas.io: [https://lnkd.in/d7uDCMJM](https://lnkd.in/d7uDCMJM)
 
 ## 🙏 Agradecimientos
 
@@ -429,9 +430,6 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 **Club IA Legal** - Comité Laboratorio
 
-- 🌐 Website: [https://clubialegal.org/](https://clubialegal.org/)
-- 💼 LinkedIn: [https://linkedin.com/company/club-ia-legal](https://linkedin.com/company/club-ia-legal)
-- 🤖 Nas.io: [https://lnkd.in/d7uDCMJM](https://lnkd.in/d7uDCMJM)
 - 📧 Email: [contacto@clubialegal.com](mailto:contacto@clubialegal.com)
 
 ---
