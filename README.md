@@ -29,6 +29,19 @@ Este repositorio contiene **dashboards interactivos** diseñados para documentar
 - 🎯 Filtrar contenido por categorías temáticas
 - 📱 Acceder desde cualquier dispositivo (diseño responsive)
 - 💾 Guardar progreso localmente (localStorage)
+- 🧠 Explorar mapas mentales interactivos con D3.js
+- 🎬 Ver resúmenes audiovisuales integrados
+
+### ⭐ Última actualización: Dashboard 4 - IA: El reto Geopolítico
+
+El Dashboard 4 incluye:
+
+- **30 puntos clave** sobre IA y geopolítica (actualizado desde 16)
+- **Mapa mental interactivo completo** con 38 nodos en 4 ramas principales
+- **Resumen audiovisual** con video alojado en Google Drive (16.38 MB)
+- **Categorización avanzada**: estado actual, regulación, tecnología, normativa, contexto, sesgos, evolución
+- **Expositor**: Erick Iriarte Ahon
+- **Fecha**: Sábado 2 de noviembre de 2025
 
 ## ✨ Características
 
@@ -66,14 +79,34 @@ Este repositorio contiene **dashboards interactivos** diseñados para documentar
 - Grid responsive en vista compacta
 - Optimizado para pantallas pequeñas
 
-### 🎬 Reproductor de Video (Dashboard 3)
+### 🗺️ Mapa Mental Interactivo D3.js (Dashboard 4)
+
+- Visualización jerárquica interactiva con D3.js v7
+- 38 nodos distribuidos en 4 ramas principales:
+  - Fundamentos de IA (10 nodos)
+  - Marco Legal y Ético (9 nodos)
+  - Contexto Geopolítico (10 nodos)
+  - Tendencias y Desafíos (9 nodos)
+- Controles interactivos:
+  - Expandir Todo (recursivo para todos los niveles)
+  - Colapsar Todo
+  - Centrar Vista
+  - Volver al Dashboard
+- Auto-centrado al cargar (1000ms delay para renderizado completo)
+- Expansión/contracción de nodos con animaciones suaves
+- Sistema de colores: Morado → Gris → Verde → Verde Oscuro
+- Zoom y paneo para exploración detallada
+
+### 🎬 Resumen Audiovisual
 
 - Página dedicada de Resumen Audiovisual
-- Reproductor HTML5 con controles completos
-- Soporte para búsqueda en video (HTTP Range Requests)
+- **Dashboard 3**: Reproductor HTML5 con video local
+- **Dashboard 4**: Integración con Google Drive (streaming externo)
+- Soporte para búsqueda en video (HTTP Range Requests en local)
 - Audio y video en sincronía
 - Botón de regreso a dashboard
 - Diseño limpio y minimalista
+- Solución LFS: Videos grandes alojados externamente (Google Drive)
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -167,17 +200,20 @@ JavaScript     - Interactividad y lógica de negocio (Vanilla JS)
 │   ├── club_ia_legal_banner_v3.png
 │   └── README.md
 │
-├── 📁 dashboard3/                    # Dashboard: Cerebros Sintéticos ⭐
+├── 📁 dashboard3/                    # Dashboard: Cerebros Sintéticos
 │   ├── index.html                    # 16 puntos conversatorios
 │   ├── mapa_mental.html              # Visualización D3.js interactiva
 │   ├── resumen_audiovisual.html      # Página de video
 │   ├── club_ia_legal_banner_v3.png
 │   └── README.md
 │
-├── 📁 dashboard4/                    # Dashboard: (Próximo evento)
-│   ├── index.html
-│   ├── mapa_mental.html
+├── 📁 dashboard4/                    # Dashboard: IA y Geopolítica ⭐ NUEVO
+│   ├── index.html                    # 30 puntos conversatorios
+│   ├── mapa-mental-completo-final.html  # Mapa mental interactivo D3.js
+│   ├── resumen_audiovisual.html      # Resumen en video (Google Drive)
 │   ├── club_ia_legal_banner_v3.png
+│   ├── Video Dashboard.mp4           # Video local (16.38 MB)
+│   ├── Conversatorio_IA_y_geopolítica_Hot_Takes.txt
 │   └── README.md
 │
 ├── 📁 docs/                          # Documentación del proyecto
@@ -198,28 +234,6 @@ JavaScript     - Interactividad y lógica de negocio (Vanilla JS)
 │
 └── 📁 scripts/                       # Scripts de utilidad
     └── find-lfs-in-pages.ps1         # Verificación LFS Pages
-```
-│   └── README.md
-│
-├── 📁 dashboard3/                    # Dashboard: Cerebros Sintéticos ⭐ NUEVO
-│   ├── index.html                    # 16 puntos conversatorios
-│   ├── mapa_mental.html              # Visualización D3.js interactiva
-│   ├── club_ia_legal_banner_v3.png
-│   └── README.md
-│
-├── � docs/                          # Documentación del proyecto
-│   ├── CAMBIOS_REALIZADOS.txt
-│   ├── CHECKLIST_FINAL.txt
-│   ├── GITHUB_PUSH_INSTRUCTIONS.md
-│   ├── PUSH_RAPIDO.md
-│   └── TAREAS_COMPLETADAS.md
-│
-├── 📁 contenido/                     # Archivos de contenido
-│   ├── Cerebros_Digitales_Hot_Takes.txt
-│   └── Cerebros_Digitales_Hot_Takes.docx
-│
-└── 📁 media/                         # Archivos multimedia
-    └── (videos, audio, etc.)
 ```
 
 ## 🎯 Casos de Uso
@@ -285,10 +299,11 @@ Edita las variables CSS en el bloque `:root`:
 ## 📊 Eventos Documentados
 
 | Evento | Fecha | Ponente | Dashboard |
-|--------|-------|---------|-----------|
+|--------|-------|---------|-----------|---|
 | Gestión de Riesgos en IA | 12 Oct 2025 | Luis Enríquez | [Ver →](./dashboard1/index.html) |
 | Legal Prompting & Hot Takes | 19 Oct 2025 | María Angélica Ramírez | [Ver →](./dashboard2/index.html) |
 | Cerebros Sintéticos, Derechos Reales | 26 Oct 2025 | Daniel Legaspi | [Ver →](./dashboard3/index.html) |
+| **IA: El reto Geopolítico** ⭐ | **2 Nov 2025** | **Erick Iriarte Ahon** | **[Ver →](./dashboard4/index.html)** |
 
 ## 🤝 Contribuciones
 
@@ -349,12 +364,43 @@ Lee [`CONTRIBUTING.md`](./CONTRIBUTING.md) para información detallada sobre:
 
 ## 🔧 Gestión del Repositorio
 
-### Git LFS (Large File Storage)
+### Git LFS (Large File Storage) y Hosting Externo
 
 Este proyecto utiliza Git LFS para gestionar archivos grandes (videos, imágenes de alta resolución). Sin embargo, los archivos servidos por GitHub Pages **NO deben estar en LFS**.
 
-**Archivos en LFS:** Videos en `/media/`  
-**Archivos normales:** Imágenes PNG de banners en dashboards
+**Archivos en LFS:** Videos en `/media/`, imágenes grandes  
+**Archivos normales:** Imágenes PNG de banners en dashboards  
+**Videos grandes (>15 MB):** Alojados en Google Drive para evitar conflictos con GitHub Pages
+
+#### Solución para Videos Grandes (Dashboard 4)
+
+Para videos que superan el límite recomendado de GitHub Pages:
+
+1. **Subir video a Google Drive**
+2. **Configurar para compartir**: Cualquier persona con el enlace puede ver
+3. **Usar URL de preview**: `https://drive.google.com/file/d/{FILE_ID}/preview`
+4. **Integrar con iframe** en la página HTML:
+
+   ```html
+   <iframe src="https://drive.google.com/file/d/{FILE_ID}/preview" 
+           width="100%" height="600px" 
+           allow="autoplay">
+   </iframe>
+   ```
+
+5. **Excluir del repositorio** con `.gitattributes`:
+
+   ```text
+   dashboard4/Video[[:space:]]Dashboard.mp4 -filter -diff -merge -text
+   ```
+
+**Beneficios:**
+
+- ✅ No consume cuota de LFS de GitHub
+- ✅ Evita conflictos con LFS Pages Guard
+- ✅ Video siempre accesible desde el dashboard
+- ✅ No requiere descarga previa
+- ✅ Streaming directo desde Google Drive
 
 Para más detalles, consulta [`docs/BRANCH_ANALYSIS.md`](./docs/BRANCH_ANALYSIS.md).
 
