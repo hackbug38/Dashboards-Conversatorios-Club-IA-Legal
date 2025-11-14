@@ -303,7 +303,7 @@ Edita las variables CSS en el bloque `:root`:
 | Gestión de Riesgos en IA | 12 Oct 2025 | Luis Enríquez | [Ver →](./dashboard1/index.html) |
 | Legal Prompting & Hot Takes | 19 Oct 2025 | María Angélica Ramírez | [Ver →](./dashboard2/index.html) |
 | Cerebros Sintéticos, Derechos Reales | 26 Oct 2025 | Daniel Legaspi | [Ver →](./dashboard3/index.html) |
-| **IA: El reto Geopolítico** ⭐ | **2 Nov 2025** | **Erick Iriarte Ahon** | **[Ver →](./dashboard4/index.html)** |
+| IA: El reto Geopolítico ⭐ | 2 Nov 2025 | Erick Iriarte Ahon | [Ver →](./dashboard4/index.html) |
 
 ## 🤝 Contribuciones
 
