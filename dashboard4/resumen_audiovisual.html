@@ -150,91 +150,22 @@
     <!-- Video Player -->
     <div class="video-container">
       <div class="video-wrapper">
-        <video 
-          id="videoPlayer"
-          controls
-          controlsList="nodownload"
-          crossorigin="anonymous"
-          preload="metadata"
-        >
-          <source src="Video Dashboard.mp4" type="video/mp4">
-          Tu navegador no soporta la etiqueta de video. Por favor, actualiza tu navegador.
-        </video>
+        <iframe 
+          src="https://drive.google.com/file/d/11doyKnW9N1CzGg62x06KWhxwddNm0K65/preview" 
+          width="100%" 
+          height="100%" 
+          allow="autoplay"
+          allowfullscreen
+          style="border: none;"
+        ></iframe>
       </div>
     </div>
   </div>
 
   <script>
     console.log('✅ Resumen Audiovisual cargado');
-    
-    const video = document.getElementById('videoPlayer');
-    
-    // Diagnosticar información del video
-    video.addEventListener('loadedmetadata', function() {
-      console.log('📹 Video metadata cargado');
-      console.log('Duración:', this.duration, 'segundos');
-      console.log('Ancho:', this.videoWidth, 'Altura:', this.videoHeight);
-      console.log('Volumen:', this.volume);
-      console.log('Muted:', this.muted);
-      console.log('Controles habilitados:', this.controls);
-      console.log('Can seek:', this.seekable.length > 0);
-    });
-    
-    video.addEventListener('loadeddata', function() {
-      console.log('✅ Datos del video listos para reproducir');
-    });
-    
-    video.addEventListener('canplay', function() {
-      console.log('✅ Video puede reproducirse');
-    });
-    
-    video.addEventListener('seeking', function() {
-      console.log('🔍 Buscando en video...');
-    });
-    
-    video.addEventListener('seeked', function() {
-      console.log('✅ Búsqueda completada. Tiempo:', this.currentTime);
-    });
-    
-    // Diagnosticar errores
-    video.addEventListener('error', function() {
-      if (this.error) {
-        console.error('❌ Error al cargar el video:', this.error.message);
-        switch(this.error.code) {
-          case 1: console.error('MEDIA_ERR_ABORTED'); break;
-          case 2: console.error('MEDIA_ERR_NETWORK'); break;
-          case 3: console.error('MEDIA_ERR_DECODE'); break;
-          case 4: console.error('MEDIA_ERR_SRC_NOT_SUPPORTED'); break;
-        }
-      }
-    });
-    
-    // Cuando se inicia la reproducción
-    video.addEventListener('play', function() {
-      console.log('▶️ Video en reproducción');
-      console.log('Volumen actual:', this.volume);
-      console.log('Duración total:', this.duration);
-      console.log('Tiempo actual:', this.currentTime);
-    });
-    
-    // Permitir búsqueda manual
-    video.addEventListener('timeupdate', function() {
-      // Mostrar tiempo cada 5 segundos aproximadamente
-      if (Math.floor(this.currentTime) % 5 === 0 && this.currentTime > 0) {
-        // Actualizar silenciosamente
-      }
-    });
-    
-    // Permitir que el usuario busque
-    video.addEventListener('click', function() {
-      if (this.paused) {
-        this.play();
-      } else {
-        this.pause();
-      }
-    });
-    
-    console.log('🎮 Controles de video configurados');
+    console.log('🎬 Video alojado en Google Drive');
+    console.log('📹 El video se reproduce directamente desde Google Drive');
   </script>
 </body>
 </html>
